@@ -7,6 +7,7 @@ class PokeListTableView: UITableView {
         tableView.delegate = delegate
         tableView.dataSource = dataSource
         tableView.register(PokeListTableViewCell.self, forCellReuseIdentifier: "\(PokeListTableViewCell.self)")
+        tableView.separatorStyle = .none
         return tableView
     }
 }

@@ -4,7 +4,12 @@ struct NetworkContext: NetworkContextProtocol {
     let configuration: NetworkConfigurationProtocol = NetworkConfiguration(baseUrl: "https://pokeapi.co")
     
     func getPokemonList(completion: @escaping (Result<PokePreviewList, Error>) -> Void) {
-        guard let url = URL(string: configuration.baseUrl + "/api/v2/pokemon") else {
+        getPokemonList(with: configuration.baseUrl + "/api/v2/pokemon",
+                       completion: completion)
+    }
+    
+    func getPokemonList(with urlString: String, completion: @escaping (Result<PokePreviewList, Error>) -> Void) {
+        guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.invalidUrl))
             return
         }
