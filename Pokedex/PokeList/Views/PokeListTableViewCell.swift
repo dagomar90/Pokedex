@@ -5,8 +5,8 @@ class PokeListTableViewCell: UITableViewCell {
         let label = UILabel()
         contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([label.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-                                     label.topAnchor.constraint(equalTo: contentView.topAnchor)])
+        NSLayoutConstraint.activate([label.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
+                                     label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)])
         return label
     }()
         

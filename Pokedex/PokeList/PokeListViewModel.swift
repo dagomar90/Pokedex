@@ -6,6 +6,7 @@ class PokeListViewModel {
     private var next: String?
     var onUpdate: () -> Void = {}
     var onError: (Error) -> Void = { _ in }
+    var onSelect: (PokePreview) -> Void = { _ in }
     
     func load() {
         network.getPokemonList(completion: { [weak self] result in
@@ -33,7 +34,10 @@ class PokeListViewModel {
     }
     
     private func loadSucceeded(_ result: PokePreviewList) {
-        viewModels = viewModels + result.results.map(PokeListCellViewModel.init)
+        viewModels = viewModels + result
+            .results
+            .map({ PokeListCellViewModel.init(preview: $0,
+                                              onSelect: { [weak self] in self?.onSelect($0) }) })
         next = result.next
         onUpdate()
     }

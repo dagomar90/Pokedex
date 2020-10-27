@@ -20,6 +20,7 @@ class PokeListViewController: UIViewController {
     private func subscribeToViewModel() {
         viewModel.onUpdate = { [weak self] in self?.onUpdate() }
         viewModel.onError = { [weak self] in self?.onError($0) }
+        viewModel.onSelect = { [weak self] in self?.onSelect($0) }
     }
     
     private func onUpdate() {
@@ -28,6 +29,10 @@ class PokeListViewController: UIViewController {
     
     private func onError(_ error: Error) {
         
+    }
+    
+    private func onSelect(_ pokemon: PokePreview) {
+        print("selecting \(pokemon.name)")
     }
     
     private func load() {
@@ -46,7 +51,10 @@ extension UIView {
 }
 
 extension PokeListViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.viewModels[indexPath.row].select()
+    }
 }
 
 extension PokeListViewController: UITableViewDataSource {
