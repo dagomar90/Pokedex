@@ -7,18 +7,18 @@ class PokeListViewModel {
     var onError: (Error) -> Void = { _ in }
     
     func load() {
-        network.getPokemonList(completion: { result in
+        network.getPokemonList(completion: { [weak self] result in
             switch result {
             case let .success(list):
-                loadSucceeded(list)
+                self?.loadSucceeded(list)
             case let .failure(error):
-                loadFailed(error)
+                self?.loadFailed(error)
             }
         })
     }
     
-    private func loadSucceeded(_ result: [PokePreview]) {
-        viewModels = result.map(PokeListCellViewModel.init)
+    private func loadSucceeded(_ result: PokePreviewList) {
+        viewModels = result.results.map(PokeListCellViewModel.init)
         onUpdate()
     }
     
