@@ -32,6 +32,9 @@
 		2BC15CA02549F9E800CBD9E8 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C9F2549F9E800CBD9E8 /* Global.swift */; };
 		2BC15CA92549FAB500CBD9E8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15CA82549FAB500CBD9E8 /* Request.swift */; };
 		2BC15CAE2549FB1800CBD9E8 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15CAD2549FB1800CBD9E8 /* Cancellable.swift */; };
+		2BC15CBD254A056800CBD9E8 /* Signika-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BC15CBA254A056800CBD9E8 /* Signika-SemiBold.ttf */; };
+		2BC15CBE254A056800CBD9E8 /* Signika-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BC15CBB254A056800CBD9E8 /* Signika-Light.ttf */; };
+		2BC15CBF254A056800CBD9E8 /* Signika-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BC15CBC254A056800CBD9E8 /* Signika-Regular.ttf */; };
 		2BE265612548A59700FFFB29 /* UIWindow+Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE265602548A59700FFFB29 /* UIWindow+Presenter.swift */; };
 		2BE2656B2548A62E00FFFB29 /* UIViewController+Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE2656A2548A62E00FFFB29 /* UIViewController+Present.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +88,9 @@
 		2BC15C9F2549F9E800CBD9E8 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		2BC15CA82549FAB500CBD9E8 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		2BC15CAD2549FB1800CBD9E8 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
+		2BC15CBA254A056800CBD9E8 /* Signika-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-SemiBold.ttf"; sourceTree = "<group>"; };
+		2BC15CBB254A056800CBD9E8 /* Signika-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Light.ttf"; sourceTree = "<group>"; };
+		2BC15CBC254A056800CBD9E8 /* Signika-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Regular.ttf"; sourceTree = "<group>"; };
 		2BE265602548A59700FFFB29 /* UIWindow+Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Presenter.swift"; sourceTree = "<group>"; };
 		2BE2656A2548A62E00FFFB29 /* UIViewController+Present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Present.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				2B9C785A25489D38009CFE99 /* AppDelegate.swift */,
+				2BC15CB5254A046E00CBD9E8 /* Resources */,
 				2BC15C422548B16F00CBD9E8 /* Network */,
 				2B32D9722548A02A005B331A /* Definitions */,
 				2B32D9712548A018005B331A /* Utils */,
@@ -255,6 +262,24 @@
 				2BC15CA82549FAB500CBD9E8 /* Request.swift */,
 			);
 			path = Requests;
+			sourceTree = "<group>";
+		};
+		2BC15CB5254A046E00CBD9E8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2BC15CB6254A048400CBD9E8 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2BC15CB6254A048400CBD9E8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2BC15CBB254A056800CBD9E8 /* Signika-Light.ttf */,
+				2BC15CBC254A056800CBD9E8 /* Signika-Regular.ttf */,
+				2BC15CBA254A056800CBD9E8 /* Signika-SemiBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,8 +385,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BC15CBE254A056800CBD9E8 /* Signika-Light.ttf in Resources */,
 				2B9C786725489D3B009CFE99 /* LaunchScreen.storyboard in Resources */,
 				2B9C786425489D3B009CFE99 /* Assets.xcassets in Resources */,
+				2BC15CBF254A056800CBD9E8 /* Signika-Regular.ttf in Resources */,
+				2BC15CBD254A056800CBD9E8 /* Signika-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
