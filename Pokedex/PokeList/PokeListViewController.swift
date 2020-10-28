@@ -2,8 +2,8 @@ import UIKit
 
 class PokeListViewController: UIViewController {
     private let viewModel = PokeListViewModel()
-    private lazy var tableView: PokeListTableView = {
-        PokeListTableView.setup(delegate: self,
+    private lazy var collectionView: PokeListCollectionView = {
+        PokeListCollectionView.setup(delegate: self,
                                 dataSource: self)
     }()
     
@@ -12,8 +12,8 @@ class PokeListViewController: UIViewController {
         
         subscribeToViewModel()
         
-        view.addSubview(tableView)
-        tableView.anchor(to: view)
+        view.addSubview(collectionView)
+        collectionView.anchor(to: view)
         load()
     }
     
@@ -24,7 +24,7 @@ class PokeListViewController: UIViewController {
     }
     
     private func onUpdate() {
-        tableView.reloadData()
+        collectionView.reloadData()
     }
     
     private func onError(_ error: Error) {
@@ -50,25 +50,31 @@ extension UIView {
     }
 }
 
-extension PokeListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+extension PokeListViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        viewModel.viewModels.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(PokeListCollectionViewCell.self)", for: indexPath) as? PokeListCollectionViewCell
+        cell?.setup(viewModel: viewModel.viewModels[indexPath.row])
+        return cell ?? UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        viewModel.loadNext(indexPath)
+    }
+}
+
+extension PokeListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         viewModel.viewModels[indexPath.row].select()
     }
 }
 
-extension PokeListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.viewModels.count
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        viewModel.loadNext(indexPath)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(PokeListTableViewCell.self)") as? PokeListTableViewCell
-        cell?.setup(viewModel: viewModel.viewModels[indexPath.row])
-        return cell ?? UITableViewCell()
+extension PokeListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: collectionView.frame.size.width / 2 - 16, height: 200)
     }
 }

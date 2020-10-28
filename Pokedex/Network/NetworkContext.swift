@@ -18,6 +18,17 @@ struct NetworkContext: NetworkContextProtocol {
             dispatcher: MainQueueDispatcher(),
             completion: completion)
     }
+    
+    func getPokemonImage(with urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completion(.failure(NetworkError.invalidUrl))
+            return
+        }
+        get(url,
+            session: URLSession.shared,
+            dispatcher: MainQueueDispatcher(),
+            completion: completion)
+    }
 }
 
 private extension NetworkContext {
@@ -40,6 +51,23 @@ private extension NetworkContext {
                         } catch {
                             dispatcher.dispatch { completion(.failure(error)) }
                         }
+                      })
+        task.resume()
+    }
+    
+    func get(_ url: URL, session: URLSession, dispatcher: Dispatcher, completion: @escaping (Result<Data, Error>) -> Void) {
+        let task = session
+            .dataTask(with: url,
+                      completionHandler: { data, _, error in
+                        if let error = error {
+                            dispatcher.dispatch { completion(.failure(error)) }
+                            return
+                        }
+                        guard let data = data else {
+                            dispatcher.dispatch { completion(.failure(NetworkError.invalidResponse)) }
+                            return
+                        }
+                        dispatcher.dispatch { completion(.success(data)) }
                       })
         task.resume()
     }
