@@ -27,7 +27,6 @@
 		2BC15C782548CC7000CBD9E8 /* PokePreviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C772548CC7000CBD9E8 /* PokePreviewList.swift */; };
 		2BC15C7D2548CE6B00CBD9E8 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C7C2548CE6B00CBD9E8 /* Dispatcher.swift */; };
 		2BC15C832548CE9D00CBD9E8 /* MainQueueDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C822548CE9D00CBD9E8 /* MainQueueDispatcher.swift */; };
-		2BC15C882548E20700CBD9E8 /* UIImageView+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C872548E20700CBD9E8 /* UIImageView+Network.swift */; };
 		2BC15C8D2548E36100CBD9E8 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C8C2548E36100CBD9E8 /* String+Utils.swift */; };
 		2BC15C922549D56100CBD9E8 /* PokeListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C912549D56100CBD9E8 /* PokeListCollectionViewCell.swift */; };
 		2BE265612548A59700FFFB29 /* UIWindow+Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE265602548A59700FFFB29 /* UIWindow+Presenter.swift */; };
@@ -78,7 +77,6 @@
 		2BC15C772548CC7000CBD9E8 /* PokePreviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokePreviewList.swift; sourceTree = "<group>"; };
 		2BC15C7C2548CE6B00CBD9E8 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		2BC15C822548CE9D00CBD9E8 /* MainQueueDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatcher.swift; sourceTree = "<group>"; };
-		2BC15C872548E20700CBD9E8 /* UIImageView+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Network.swift"; sourceTree = "<group>"; };
 		2BC15C8C2548E36100CBD9E8 /* String+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		2BC15C912549D56100CBD9E8 /* PokeListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeListCollectionViewCell.swift; sourceTree = "<group>"; };
 		2BE265602548A59700FFFB29 /* UIWindow+Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Presenter.swift"; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 			children = (
 				2BE265602548A59700FFFB29 /* UIWindow+Presenter.swift */,
 				2BE2656A2548A62E00FFFB29 /* UIViewController+Present.swift */,
-				2BC15C872548E20700CBD9E8 /* UIImageView+Network.swift */,
 				2BC15C8C2548E36100CBD9E8 /* String+Utils.swift */,
 			);
 			path = Extensions;
@@ -381,7 +378,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B32D96825489E5D005B331A /* PokeListViewModel.swift in Sources */,
-				2BC15C882548E20700CBD9E8 /* UIImageView+Network.swift in Sources */,
 				2BC15C782548CC7000CBD9E8 /* PokePreviewList.swift in Sources */,
 				2BC15C7D2548CE6B00CBD9E8 /* Dispatcher.swift in Sources */,
 				2BC15C732548CB0100CBD9E8 /* NetworkError.swift in Sources */,
