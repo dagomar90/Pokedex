@@ -19,6 +19,17 @@ struct NetworkContext: NetworkContextProtocol {
                    completion: completion)
     }
     
+    func getPokemonDetail(with urlString: String, completion: @escaping (Result<PokeDetail, Error>) -> Void) -> Request? {
+        guard let url = URL(string: urlString) else {
+            completion(.failure(NetworkError.invalidUrl))
+            return nil
+        }
+        return get(url,
+                   session: URLSession.shared,
+                   dispatcher: MainQueueDispatcher(),
+                   completion: completion)
+    }
+    
     func getPokemonImage(with urlString: String, completion: @escaping (Result<Data, Error>) -> Void) -> Request? {
         guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.invalidUrl))

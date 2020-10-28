@@ -24,5 +24,7 @@ extension PokeDetailViewController {
         
         view.addSubview(contentView)
         contentView.anchor(to: view)
+        
+        viewModel.load()
     }
 }

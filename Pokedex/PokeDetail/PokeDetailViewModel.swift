@@ -10,6 +10,22 @@ class PokeDetailViewModel {
     }
     
     func load() {
-        // laod detail
+        network.getPokemonDetail(with: preview.url,
+                                 completion: { [weak self] result in
+                                    switch result {
+                                    case let .success(detail):
+                                        self?.onSuccess(detail)
+                                    case let .failure(error):
+                                        self?.onError(error)
+                                    }
+                                 })?.execute()
+    }
+    
+    private func onSuccess(_ detail: PokeDetail) {
+        print("detail: \(detail)")
+    }
+    
+    private func onError(_ error: Error) {
+        
     }
 }
