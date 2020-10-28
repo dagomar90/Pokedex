@@ -3,7 +3,8 @@ import UIKit
 class PokeListCollectionViewCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
+        label.numberOfLines = 2
+        label.textAlignment = .center
         label.font = UIFont(name: "Signika-SemiBold", size: 17)
         contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +22,8 @@ class PokeListCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
                                      imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
                                      imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),
-                                     imageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -16)])
+                                     imageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -8),
+                                     imageView.heightAnchor.constraint(equalToConstant: 96)])
         return imageView
     }()
     
