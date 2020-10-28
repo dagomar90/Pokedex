@@ -1,12 +1,20 @@
 import Foundation
 
 class PokeListViewModel {
-    private let network = Application.network
+    private let network: NetworkContextProtocol
+    private let coordinator: PokeListCoordinator
     private(set) var viewModels: [PokeListCellViewModel] = []
     private var next: String?
+    
     var onUpdate: () -> Void = {}
     var onError: (Error) -> Void = { _ in }
     var onSelect: (PokePreview) -> Void = { _ in }
+    
+    init(network: NetworkContextProtocol,
+         coordinator: PokeListCoordinator) {
+        self.network = network
+        self.coordinator = coordinator
+    }
     
     func load() {
         network.getPokemonList(completion: { [weak self] result in
@@ -44,5 +52,13 @@ class PokeListViewModel {
     
     private func loadFailed(_ error: Error) {
         onError(error)
+    }
+}
+
+extension PokeListViewModel {
+    func navigateToDetail(preview: PokePreview, presenter: Presenter) {
+        coordinator.showDetail(preview: preview,
+                               presenter: presenter,
+                               network: network)
     }
 }

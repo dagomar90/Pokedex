@@ -1,12 +1,21 @@
 import UIKit
 
 class PokeListViewController: UIViewController {
-    private let viewModel = PokeListViewModel()
+    private let viewModel: PokeListViewModel
     private lazy var collectionView: PokeListCollectionView = {
         PokeListCollectionView.setup(delegate: self,
                                      dataSource: self,
                                      size: view.frame.size)
     }()
+    
+    init(viewModel: PokeListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init with coder is not supported")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +42,7 @@ class PokeListViewController: UIViewController {
     }
     
     private func onSelect(_ pokemon: PokePreview) {
-        print("selecting \(pokemon.name)")
+        navigationController.map({ viewModel.navigateToDetail(preview: pokemon, presenter: $0) })
     }
     
     private func load() {

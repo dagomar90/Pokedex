@@ -8,7 +8,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let coordinator = window.map(PokeListCoordinator.init)
+        let coordinator = window.map({ PokeListCoordinator(presenter: $0,
+                                                           network: Application.network) })
         coordinator?.start()
         
         return true
