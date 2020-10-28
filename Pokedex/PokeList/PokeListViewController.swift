@@ -4,7 +4,8 @@ class PokeListViewController: UIViewController {
     private let viewModel = PokeListViewModel()
     private lazy var collectionView: PokeListCollectionView = {
         PokeListCollectionView.setup(delegate: self,
-                                dataSource: self)
+                                     dataSource: self,
+                                     size: view.frame.size)
     }()
     
     override func viewDidLoad() {
@@ -16,7 +17,7 @@ class PokeListViewController: UIViewController {
         collectionView.anchor(to: view)
         load()
     }
-    
+        
     private func subscribeToViewModel() {
         viewModel.onUpdate = { [weak self] in self?.onUpdate() }
         viewModel.onError = { [weak self] in self?.onError($0) }
@@ -70,11 +71,5 @@ extension PokeListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         viewModel.viewModels[indexPath.row].select()
-    }
-}
-
-extension PokeListViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.frame.size.width / 2 - 16, height: 200)
     }
 }

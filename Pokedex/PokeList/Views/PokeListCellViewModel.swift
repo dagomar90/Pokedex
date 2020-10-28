@@ -1,11 +1,17 @@
 import Foundation
 
-struct PokeListCellViewModel {
-    private let network = NetworkContext()
+class PokeListCellViewModel {
+    private let network = Application.network
     let preview: PokePreview
     var onSelect: (PokePreview) -> Void = { _ in }
     var onSuccess: (Data) -> Void = { _ in }
     var onFailure: (Error) -> Void = { _ in }
+    private var request: Request?
+    
+    init(preview: PokePreview, onSelect: @escaping (PokePreview) -> Void) {
+        self.preview = preview
+        self.onSelect = onSelect
+    }
     
     var name: String {
         preview.name
@@ -15,19 +21,28 @@ struct PokeListCellViewModel {
         preview.url
     }
     
+    var placeholderName: String {
+        "Placeholder"
+    }
+    
     func select() {
         onSelect(preview)
     }
     
+    func cancelRequest() {
+        request?.cancel()
+    }
+    
     func loadImage() {
         guard let identifier = url.components(separatedBy: "/").filter({ !$0.isEmpty }).last else { return }
-        network.getPokemonImage(with: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(identifier).png", completion: { result in
+        request = network.getPokemonImage(with: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(identifier).png", completion: { [weak self] result in
             switch result {
             case let .success(data):
-                onSuccess(data)
+                self?.onSuccess(data)
             case let .failure(error):
-                onFailure(error)
+                self?.onFailure(error)
             }
         })
+        request?.execute()
     }
 }

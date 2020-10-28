@@ -29,6 +29,9 @@
 		2BC15C832548CE9D00CBD9E8 /* MainQueueDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C822548CE9D00CBD9E8 /* MainQueueDispatcher.swift */; };
 		2BC15C8D2548E36100CBD9E8 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C8C2548E36100CBD9E8 /* String+Utils.swift */; };
 		2BC15C922549D56100CBD9E8 /* PokeListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C912549D56100CBD9E8 /* PokeListCollectionViewCell.swift */; };
+		2BC15CA02549F9E800CBD9E8 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C9F2549F9E800CBD9E8 /* Global.swift */; };
+		2BC15CA92549FAB500CBD9E8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15CA82549FAB500CBD9E8 /* Request.swift */; };
+		2BC15CAE2549FB1800CBD9E8 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15CAD2549FB1800CBD9E8 /* Cancellable.swift */; };
 		2BE265612548A59700FFFB29 /* UIWindow+Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE265602548A59700FFFB29 /* UIWindow+Presenter.swift */; };
 		2BE2656B2548A62E00FFFB29 /* UIViewController+Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE2656A2548A62E00FFFB29 /* UIViewController+Present.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +82,9 @@
 		2BC15C822548CE9D00CBD9E8 /* MainQueueDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatcher.swift; sourceTree = "<group>"; };
 		2BC15C8C2548E36100CBD9E8 /* String+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		2BC15C912549D56100CBD9E8 /* PokeListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeListCollectionViewCell.swift; sourceTree = "<group>"; };
+		2BC15C9F2549F9E800CBD9E8 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		2BC15CA82549FAB500CBD9E8 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		2BC15CAD2549FB1800CBD9E8 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		2BE265602548A59700FFFB29 /* UIWindow+Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Presenter.swift"; sourceTree = "<group>"; };
 		2BE2656A2548A62E00FFFB29 /* UIViewController+Present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Present.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +117,7 @@
 		2B32D9712548A018005B331A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2BC15C9F2549F9E800CBD9E8 /* Global.swift */,
 				2BC15C812548CE8C00CBD9E8 /* Dispatchers */,
 				2B4C0BEE2548A56300CF76E3 /* Extensions */,
 			);
@@ -124,6 +131,7 @@
 				2BC15C592548C61A00CBD9E8 /* NetworkContextProtocol.swift */,
 				2BC15C6D2548C7FA00CBD9E8 /* NetworkConfigurationProtocol.swift */,
 				2BC15C7C2548CE6B00CBD9E8 /* Dispatcher.swift */,
+				2BC15CAD2549FB1800CBD9E8 /* Cancellable.swift */,
 			);
 			path = Definitions;
 			sourceTree = "<group>";
@@ -215,7 +223,7 @@
 		2BC15C422548B16F00CBD9E8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				2BC15C642548C6E300CBD9E8 /* Requests */,
+				2BC15CA72549FAA300CBD9E8 /* Requests */,
 				2BC15C432548B21D00CBD9E8 /* Models */,
 				2BC15C542548C60400CBD9E8 /* NetworkContext.swift */,
 				2BC15C682548C7E000CBD9E8 /* NetworkConfiguration.swift */,
@@ -233,19 +241,20 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		2BC15C642548C6E300CBD9E8 /* Requests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Requests;
-			sourceTree = "<group>";
-		};
 		2BC15C812548CE8C00CBD9E8 /* Dispatchers */ = {
 			isa = PBXGroup;
 			children = (
 				2BC15C822548CE9D00CBD9E8 /* MainQueueDispatcher.swift */,
 			);
 			path = Dispatchers;
+			sourceTree = "<group>";
+		};
+		2BC15CA72549FAA300CBD9E8 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				2BC15CA82549FAB500CBD9E8 /* Request.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,6 +406,9 @@
 				2BC15C6E2548C7FA00CBD9E8 /* NetworkConfigurationProtocol.swift in Sources */,
 				2B32D96D25489E69005B331A /* PokeListCoordinator.swift in Sources */,
 				2B32D9742548A042005B331A /* Presenter.swift in Sources */,
+				2BC15CA02549F9E800CBD9E8 /* Global.swift in Sources */,
+				2BC15CAE2549FB1800CBD9E8 /* Cancellable.swift in Sources */,
+				2BC15CA92549FAB500CBD9E8 /* Request.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

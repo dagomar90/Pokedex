@@ -1,38 +1,38 @@
 import Foundation
 
 struct NetworkContext: NetworkContextProtocol {
-    let configuration: NetworkConfigurationProtocol = NetworkConfiguration(baseUrl: "https://pokeapi.co")
+    let configuration: NetworkConfigurationProtocol
     
-    func getPokemonList(completion: @escaping (Result<PokePreviewList, Error>) -> Void) {
+    func getPokemonList(completion: @escaping (Result<PokePreviewList, Error>) -> Void) -> Request? {
         getPokemonList(with: configuration.baseUrl + "/api/v2/pokemon",
                        completion: completion)
     }
     
-    func getPokemonList(with urlString: String, completion: @escaping (Result<PokePreviewList, Error>) -> Void) {
+    func getPokemonList(with urlString: String, completion: @escaping (Result<PokePreviewList, Error>) -> Void) -> Request? {
         guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.invalidUrl))
-            return
+            return nil
         }
-        get(url,
-            session: URLSession.shared,
-            dispatcher: MainQueueDispatcher(),
-            completion: completion)
+        return get(url,
+                   session: URLSession.shared,
+                   dispatcher: MainQueueDispatcher(),
+                   completion: completion)
     }
     
-    func getPokemonImage(with urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+    func getPokemonImage(with urlString: String, completion: @escaping (Result<Data, Error>) -> Void) -> Request? {
         guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.invalidUrl))
-            return
+            return nil
         }
-        get(url,
-            session: URLSession.shared,
-            dispatcher: MainQueueDispatcher(),
-            completion: completion)
+        return get(url,
+                   session: URLSession.shared,
+                   dispatcher: MainQueueDispatcher(),
+                   completion: completion)
     }
 }
 
 private extension NetworkContext {
-    func get<T: Decodable>(_ url: URL, session: URLSession, dispatcher: Dispatcher, completion: @escaping (Result<T, Error>) -> Void) {
+    func get<T: Decodable>(_ url: URL, session: URLSession, dispatcher: Dispatcher, completion: @escaping (Result<T, Error>) -> Void) -> Request {
         let task = session
             .dataTask(with: url,
                       completionHandler: { data, _, error in
@@ -52,10 +52,10 @@ private extension NetworkContext {
                             dispatcher.dispatch { completion(.failure(error)) }
                         }
                       })
-        task.resume()
+        return Request(task: task)
     }
     
-    func get(_ url: URL, session: URLSession, dispatcher: Dispatcher, completion: @escaping (Result<Data, Error>) -> Void) {
+    func get(_ url: URL, session: URLSession, dispatcher: Dispatcher, completion: @escaping (Result<Data, Error>) -> Void) -> Request {
         let task = session
             .dataTask(with: url,
                       completionHandler: { data, _, error in
@@ -69,6 +69,6 @@ private extension NetworkContext {
                         }
                         dispatcher.dispatch { completion(.success(data)) }
                       })
-        task.resume()
+        return Request(task: task)
     }
 }

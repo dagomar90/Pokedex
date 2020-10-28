@@ -1,7 +1,7 @@
 import Foundation
 
 class PokeListViewModel {
-    private let network = NetworkContext()
+    private let network = Application.network
     private(set) var viewModels: [PokeListCellViewModel] = []
     private var next: String?
     var onUpdate: () -> Void = {}
@@ -16,7 +16,7 @@ class PokeListViewModel {
             case let .failure(error):
                 self?.loadFailed(error)
             }
-        })
+        })?.execute()
     }
     
     func loadNext(_ indexPath: IndexPath) {
@@ -30,7 +30,7 @@ class PokeListViewModel {
             case let .failure(error):
                 self?.loadFailed(error)
             }
-        })
+        })?.execute()
     }
     
     private func loadSucceeded(_ result: PokePreviewList) {
