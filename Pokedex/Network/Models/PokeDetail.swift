@@ -9,4 +9,5 @@ struct PokeDetail: Codable {
     let order: Int
     let weight: Int
     let location_area_encounters: String
+    let sprites: PokeImages
 }
