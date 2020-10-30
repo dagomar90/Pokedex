@@ -51,12 +51,12 @@ class PokeListViewController: UIViewController {
 }
 
 extension UIView {
-    func anchor(to view: UIView) {
+    func anchor(to view: UIView, margin: CGFloat = 0) {
         translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([topAnchor.constraint(equalTo: view.topAnchor),
-                                     bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                                     leftAnchor.constraint(equalTo: view.leftAnchor),
-                                     rightAnchor.constraint(equalTo: view.rightAnchor)])
+        NSLayoutConstraint.activate([topAnchor.constraint(equalTo: view.topAnchor, constant: margin),
+                                     bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -margin),
+                                     leftAnchor.constraint(equalTo: view.leftAnchor, constant: margin),
+                                     rightAnchor.constraint(equalTo: view.rightAnchor, constant: -margin)])
     }
 }
 

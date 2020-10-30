@@ -5,25 +5,42 @@ class PokeDetailViewController: UIViewController {
     
     private lazy var contentView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.white
-        
+        view.backgroundColor = UIColor(named: "Background")
         return view
     }()
     
+    private lazy var backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        return view
+    }()
+        
     private lazy var nameLabel: UILabel = {
-        UILabel()
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.font = UIFont(name: "Signika-SemiBold", size: 22)
+        return label
     }()
     
     private lazy var heightLabel: UILabel = {
-        UILabel()
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.font = UIFont(name: "Signika-Light", size: 16)
+        return label
     }()
     
     private lazy var weightLabel: UILabel = {
-        UILabel()
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.font = UIFont(name: "Signika-Light", size: 16)
+        return label
     }()
     
     private lazy var baseExperienceLabel: UILabel = {
-        UILabel()
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.font = UIFont(name: "Signika-Light", size: 16)
+        return label
     }()
     
     private lazy var verticalStack: UIStackView = {
@@ -41,6 +58,8 @@ class PokeDetailViewController: UIViewController {
     private lazy var imagesScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isPagingEnabled = true
+        scrollView.delegate = self
+        scrollView.showsHorizontalScrollIndicator = false
         return scrollView
     }()
     
@@ -49,6 +68,10 @@ class PokeDetailViewController: UIViewController {
         stackView.axis = NSLayoutConstraint.Axis.horizontal
         stackView.alignment = .leading
         return stackView
+    }()
+    
+    private lazy var imagesPageControl: UIPageControl = {
+        UIPageControl()
     }()
     
     init(viewModel: PokeDetailViewModel) {
@@ -73,6 +96,10 @@ extension PokeDetailViewController {
     private func setupLayout() {
         view.addSubview(contentView)
         contentView.anchor(to: view)
+        
+        contentView.addSubview(backgroundView)
+        backgroundView.layer.cornerRadius = 5
+        backgroundView.layer.masksToBounds = true
         
         imagesScrollView.addSubview(imagesStackView)
         imagesStackView.anchor(to: imagesScrollView)
@@ -100,8 +127,19 @@ extension PokeDetailViewController {
         
         verticalStack.widthAnchor.constraint(equalTo: mainScrollView.widthAnchor).isActive = true
         
+        mainScrollView.addSubview(imagesPageControl)
+        imagesPageControl.translatesAutoresizingMaskIntoConstraints = false
+        imagesPageControl.bottomAnchor.constraint(equalTo: imagesScrollView.bottomAnchor, constant: -12).isActive = true
+        imagesPageControl.centerXAnchor.constraint(equalTo: imagesScrollView.centerXAnchor).isActive = true
+        
         contentView.addSubview(mainScrollView)
         mainScrollView.anchor(to: contentView)
+        
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([backgroundView.topAnchor.constraint(equalTo: verticalStack.topAnchor),
+                                     backgroundView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
+                                     backgroundView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),
+                                     backgroundView.bottomAnchor.constraint(equalTo: verticalStack.bottomAnchor)])
     }
     
     private func bindToViewModel() {
@@ -125,9 +163,29 @@ extension PokeDetailViewController {
             image.widthAnchor.constraint(equalTo: imagesScrollView.widthAnchor).isActive = true
             image.heightAnchor.constraint(equalTo: imagesScrollView.heightAnchor).isActive = true
         })
+        
+        imagesPageControl.numberOfPages = images.count
+        imagesPageControl.currentPage = 0
+        imagesPageControl.currentPageIndicatorTintColor = UIColor(named: "Background")
+        imagesPageControl.pageIndicatorTintColor = .lightGray
+        imagesPageControl.addTarget(self, action: #selector(pageControlValueChanged(_:)), for: .valueChanged)
     }
     
     private func onError(_ error: Error) {
         
+    }
+}
+
+private extension PokeDetailViewController {
+    @objc func pageControlValueChanged(_ sender: UIPageControl) {
+        let xOffset = CGFloat(sender.currentPage) * imagesScrollView.frame.size.width
+        imagesScrollView.setContentOffset(CGPoint(x: xOffset, y: 0), animated: true)
+    }
+}
+
+extension PokeDetailViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard scrollView.frame.size.width > 0 else { return }
+        imagesPageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
     }
 }
