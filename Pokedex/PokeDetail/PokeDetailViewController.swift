@@ -170,6 +170,10 @@ extension PokeDetailViewController {
         
         imagesPageControl.numberOfPages = images.count
         imagesPageControl.currentPage = 0
+        
+        verticalStack.addArrangedSubview(PokeInfoView(viewModel: viewModel.typeViewModel))
+        verticalStack.addArrangedSubview(PokeInfoView(viewModel: viewModel.abilitityViewModel))
+        verticalStack.addArrangedSubview(PokeInfoView(viewModel: viewModel.statViewModel))
     }
     
     private func onError(_ error: Error) {

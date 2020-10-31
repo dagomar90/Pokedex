@@ -36,6 +36,27 @@ class PokeDetailViewModel {
          detail?.sprites.back_shiny_female].compactMap({ $0 })
     }
     
+    var abilitityViewModel: PokeInfoViewModel {
+        let keyValues = detail
+            .map({ $0.abilities.map({ PokeKeyValue(key: $0.ability.name,
+                                                   value: "SLOT \($0.slot)") }) }) ?? []
+        return PokeInfoViewModel(title: "Abilities: ", keyValues: keyValues)
+    }
+    
+    var statViewModel: PokeInfoViewModel {
+        let keyValues = detail
+            .map({ $0.stats.map({ PokeKeyValue(key: $0.stat.name,
+                                               value: "\($0.base_stat)") }) }) ?? []
+        return PokeInfoViewModel(title: "Stats: ", keyValues: keyValues)
+    }
+    
+    var typeViewModel: PokeInfoViewModel {
+        let keyValues = detail
+            .map({ $0.types.map({ PokeKeyValue(key: $0.type.name,
+                                               value: "SLOT \($0.slot)") }) }) ?? []
+        return PokeInfoViewModel(title: "Types: ", keyValues: keyValues)
+    }
+        
     init(preview: PokePreview, network: NetworkContextProtocol) {
         self.preview = preview
         self.network = network

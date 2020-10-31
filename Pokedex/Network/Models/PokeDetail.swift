@@ -12,6 +12,5 @@ struct PokeDetail: Codable {
     let sprites: PokeImages
     let abilities: [PokeAbility]
     let stats: [PokeStat]
-    let species: PokeResource
-    let forms: [PokeResource]
+    let types: [PokeType]
 }
