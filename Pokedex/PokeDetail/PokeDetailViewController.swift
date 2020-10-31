@@ -71,7 +71,11 @@ class PokeDetailViewController: UIViewController {
     }()
     
     private lazy var imagesPageControl: UIPageControl = {
-        UIPageControl()
+        let pageControl = UIPageControl()
+        pageControl.currentPageIndicatorTintColor = UIColor(named: "Background")
+        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.addTarget(self, action: #selector(pageControlValueChanged(_:)), for: .valueChanged)
+        return pageControl
     }()
     
     init(viewModel: PokeDetailViewModel) {
@@ -166,13 +170,13 @@ extension PokeDetailViewController {
         
         imagesPageControl.numberOfPages = images.count
         imagesPageControl.currentPage = 0
-        imagesPageControl.currentPageIndicatorTintColor = UIColor(named: "Background")
-        imagesPageControl.pageIndicatorTintColor = .lightGray
-        imagesPageControl.addTarget(self, action: #selector(pageControlValueChanged(_:)), for: .valueChanged)
     }
     
     private func onError(_ error: Error) {
-        
+        UIAlertController.show(error: error,
+                               in: self,
+                               retry: { self.viewModel.load() },
+                               cancel: { self.navigationController?.popViewController(animated: true) })
     }
 }
 

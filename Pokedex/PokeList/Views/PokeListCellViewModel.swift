@@ -1,14 +1,17 @@
 import Foundation
 
 class PokeListCellViewModel {
-    private let network = Application.network
+    let network: NetworkContextProtocol
     let preview: PokePreview
+    
     var onSelect: (PokePreview) -> Void = { _ in }
     var onSuccess: (Data) -> Void = { _ in }
     var onFailure: (Error) -> Void = { _ in }
+    
     private var request: Request?
     
-    init(preview: PokePreview, onSelect: @escaping (PokePreview) -> Void) {
+    init(network: NetworkContextProtocol, preview: PokePreview, onSelect: @escaping (PokePreview) -> Void) {
+        self.network = network
         self.preview = preview
         self.onSelect = onSelect
     }

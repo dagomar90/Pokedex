@@ -14,7 +14,7 @@ class PokeDetailViewModel {
     }
         
     var baseExperience: String {
-        detail.map({ "BASE EXP: \($0.base_experience)" }).orEmpty
+        detail.map({ "BASE EXP: \($0.base_experience) pt" }).orEmpty
     }
     
     var height: String {
@@ -22,7 +22,7 @@ class PokeDetailViewModel {
     }
     
     var weight: String {
-        detail.map({ "WEIGHT: \($0.weight)" }).orEmpty
+        detail.map({ "WEIGHT: \($0.weight / 10) kg" }).orEmpty
     }
     
     var images: [String] {

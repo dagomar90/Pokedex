@@ -2,7 +2,7 @@ import Foundation
 
 class PokeListViewModel {
     private let network: NetworkContextProtocol
-    private let coordinator: PokeListCoordinator
+    private let coordinator: PokeListCoordinatorProtocol
     private(set) var viewModels: [PokeListCellViewModel] = []
     private var next: String?
     
@@ -11,7 +11,7 @@ class PokeListViewModel {
     var onSelect: (PokePreview) -> Void = { _ in }
     
     init(network: NetworkContextProtocol,
-         coordinator: PokeListCoordinator) {
+         coordinator: PokeListCoordinatorProtocol) {
         self.network = network
         self.coordinator = coordinator
     }
@@ -44,7 +44,8 @@ class PokeListViewModel {
     private func loadSucceeded(_ result: PokePreviewList) {
         viewModels = viewModels + result
             .results
-            .map({ PokeListCellViewModel.init(preview: $0,
+            .map({ PokeListCellViewModel.init(network: network,
+                                              preview: $0,
                                               onSelect: { [weak self] in self?.onSelect($0) }) })
         next = result.next
         onUpdate()

@@ -1,7 +1,14 @@
 import Foundation
 import UIKit
 
-struct PokeListCoordinator {
+protocol PokeListCoordinatorProtocol {
+    func start()
+    func showDetail(preview: PokePreview,
+                    presenter: Presenter,
+                    network: NetworkContextProtocol)
+}
+
+struct PokeListCoordinator: PokeListCoordinatorProtocol {
     let presenter: Presenter
     let network: NetworkContextProtocol
     
