@@ -35,6 +35,8 @@
 		2BAA619D254DEE6C0041B395 /* PokeInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA619C254DEE6C0041B395 /* PokeInfoRowView.swift */; };
 		2BAA61A1254DEE7A0041B395 /* PokeInfoRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61A0254DEE7A0041B395 /* PokeInfoRowViewModel.swift */; };
 		2BAA61A5254DF23F0041B395 /* PokeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61A4254DF23F0041B395 /* PokeType.swift */; };
+		2BAA61AA254DF4330041B395 /* PokeSlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61A9254DF4330041B395 /* PokeSlotView.swift */; };
+		2BAA61AE254DF4AA0041B395 /* PokeSlotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61AD254DF4AA0041B395 /* PokeSlotViewModel.swift */; };
 		2BC15C452548B23700CBD9E8 /* PokePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C442548B23700CBD9E8 /* PokePreview.swift */; };
 		2BC15C4D2548B2A100CBD9E8 /* PokeListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C4C2548B2A100CBD9E8 /* PokeListCellViewModel.swift */; };
 		2BC15C552548C60400CBD9E8 /* NetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C542548C60400CBD9E8 /* NetworkContext.swift */; };
@@ -108,6 +110,8 @@
 		2BAA619C254DEE6C0041B395 /* PokeInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeInfoRowView.swift; sourceTree = "<group>"; };
 		2BAA61A0254DEE7A0041B395 /* PokeInfoRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeInfoRowViewModel.swift; sourceTree = "<group>"; };
 		2BAA61A4254DF23F0041B395 /* PokeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeType.swift; sourceTree = "<group>"; };
+		2BAA61A9254DF4330041B395 /* PokeSlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeSlotView.swift; sourceTree = "<group>"; };
+		2BAA61AD254DF4AA0041B395 /* PokeSlotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeSlotViewModel.swift; sourceTree = "<group>"; };
 		2BC15C442548B23700CBD9E8 /* PokePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokePreview.swift; sourceTree = "<group>"; };
 		2BC15C4C2548B2A100CBD9E8 /* PokeListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeListCellViewModel.swift; sourceTree = "<group>"; };
 		2BC15C542548C60400CBD9E8 /* NetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkContext.swift; sourceTree = "<group>"; };
@@ -299,7 +303,7 @@
 		2BAA6184254DDB6A0041B395 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2BAA6187254DDB970041B395 /* PokeStatView */,
+				2BAA61A8254DF4240041B395 /* PokeSlowView */,
 				2BAA6186254DDB860041B395 /* PokeAbilityView */,
 				2BAA6185254DDB750041B395 /* PokeImageView */,
 			);
@@ -326,11 +330,13 @@
 			path = PokeAbilityView;
 			sourceTree = "<group>";
 		};
-		2BAA6187254DDB970041B395 /* PokeStatView */ = {
+		2BAA61A8254DF4240041B395 /* PokeSlowView */ = {
 			isa = PBXGroup;
 			children = (
+				2BAA61A9254DF4330041B395 /* PokeSlotView.swift */,
+				2BAA61AD254DF4AA0041B395 /* PokeSlotViewModel.swift */,
 			);
-			path = PokeStatView;
+			path = PokeSlowView;
 			sourceTree = "<group>";
 		};
 		2BC15C422548B16F00CBD9E8 /* Network */ = {
@@ -527,6 +533,7 @@
 				2BAA61A5254DF23F0041B395 /* PokeType.swift in Sources */,
 				2BC15CD4254A280400CBD9E8 /* PokeDetailViewModel.swift in Sources */,
 				2BC15C5A2548C61A00CBD9E8 /* NetworkContextProtocol.swift in Sources */,
+				2BAA61AE254DF4AA0041B395 /* PokeSlotViewModel.swift in Sources */,
 				2BC15CE3254A333C00CBD9E8 /* PokeDetail.swift in Sources */,
 				2B9C785B25489D38009CFE99 /* AppDelegate.swift in Sources */,
 				2BAA6104254C98880041B395 /* PokeAbility.swift in Sources */,
@@ -545,6 +552,7 @@
 				2B32D9742548A042005B331A /* Presenter.swift in Sources */,
 				2BC15CFD254B764300CBD9E8 /* PokeImageViewModel.swift in Sources */,
 				2BC15CD9254A281300CBD9E8 /* PokeDetailCoordinator.swift in Sources */,
+				2BAA61AA254DF4330041B395 /* PokeSlotView.swift in Sources */,
 				2BC15CA02549F9E800CBD9E8 /* Global.swift in Sources */,
 				2BAA6193254DDD860041B395 /* PokeInfoView.swift in Sources */,
 				2BC15CAE2549FB1800CBD9E8 /* Cancellable.swift in Sources */,

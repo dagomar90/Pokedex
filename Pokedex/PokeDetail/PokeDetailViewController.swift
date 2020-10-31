@@ -143,7 +143,7 @@ extension PokeDetailViewController {
         NSLayoutConstraint.activate([backgroundView.topAnchor.constraint(equalTo: verticalStack.topAnchor),
                                      backgroundView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
                                      backgroundView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),
-                                     backgroundView.bottomAnchor.constraint(equalTo: verticalStack.bottomAnchor)])
+                                     backgroundView.bottomAnchor.constraint(equalTo: verticalStack.bottomAnchor, constant: 16)])
     }
     
     private func bindToViewModel() {
@@ -170,10 +170,20 @@ extension PokeDetailViewController {
         
         imagesPageControl.numberOfPages = images.count
         imagesPageControl.currentPage = 0
+                
+        let typeInfoView = PokeInfoView(viewModel: viewModel.typeViewModel)
+        let abilitiesInfoView = PokeInfoView(viewModel: viewModel.abilitityViewModel)
+        let statInfoView = PokeInfoView(viewModel: viewModel.statViewModel)
+        verticalStack.addSeparator()
+        verticalStack.addArrangedSubview(typeInfoView)
+        verticalStack.addSeparator()
+        verticalStack.addArrangedSubview(abilitiesInfoView)
+        verticalStack.addSeparator()
+        verticalStack.addArrangedSubview(statInfoView)
         
-        verticalStack.addArrangedSubview(PokeInfoView(viewModel: viewModel.typeViewModel))
-        verticalStack.addArrangedSubview(PokeInfoView(viewModel: viewModel.abilitityViewModel))
-        verticalStack.addArrangedSubview(PokeInfoView(viewModel: viewModel.statViewModel))
+        NSLayoutConstraint.activate([typeInfoView.widthAnchor.constraint(equalTo: verticalStack.widthAnchor, constant: -48),
+                                     abilitiesInfoView.widthAnchor.constraint(equalTo: verticalStack.widthAnchor, constant: -48),
+                                      statInfoView.widthAnchor.constraint(equalTo: verticalStack.widthAnchor, constant: -48)])
     }
     
     private func onError(_ error: Error) {
@@ -195,5 +205,15 @@ extension PokeDetailViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard scrollView.frame.size.width > 0 else { return }
         imagesPageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+    }
+}
+
+extension UIStackView {
+    func addSeparator() {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "Separator")
+        addArrangedSubview(view)
+        view.widthAnchor.constraint(equalTo: widthAnchor, constant: -48).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
 }

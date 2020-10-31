@@ -7,14 +7,26 @@ class PokeInfoView: UIView {
         let stack = UIStackView()
         stack.distribution = .fill
         stack.spacing = 8
-        stack.axis = .vertical
-        stack.alignment = .center
+        stack.axis = .horizontal
         return stack
+    }()
+    
+    private lazy var horizontalStack: UIStackView = {
+        let stack = UIStackView()
+        stack.distribution = .fill
+        stack.spacing = 8
+        stack.axis = .vertical
+        return stack
+    }()
+    
+    private lazy var scrollView: UIScrollView = {
+        UIScrollView()
     }()
         
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.font = UIFont(name: "Signika-Light", size: 16)
         return label
     }()
         
@@ -26,6 +38,7 @@ class PokeInfoView: UIView {
         verticalStack.anchor(to: self)
         
         verticalStack.addArrangedSubview(titleLabel)
+        verticalStack.addArrangedSubview(horizontalStack)
         onUpdate()
     }
     
@@ -37,7 +50,7 @@ class PokeInfoView: UIView {
         titleLabel.text = viewModel.title
         viewModel
             .pokeInfoRowViewModels
-            .map(PokeInfoRowView.init)
-            .forEach(verticalStack.addArrangedSubview)
+            .map(PokeSlotView.init)
+            .forEach(horizontalStack.addArrangedSubview)
     }
 }

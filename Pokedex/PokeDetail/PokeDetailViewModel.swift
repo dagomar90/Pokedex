@@ -37,24 +37,18 @@ class PokeDetailViewModel {
     }
     
     var abilitityViewModel: PokeInfoViewModel {
-        let keyValues = detail
-            .map({ $0.abilities.map({ PokeKeyValue(key: $0.ability.name,
-                                                   value: "SLOT \($0.slot)") }) }) ?? []
-        return PokeInfoViewModel(title: "Abilities: ", keyValues: keyValues)
+        let values = detail?.abilities.map({ $0.ability.name.uppercased() }) ?? []
+        return PokeInfoViewModel(title: "ABILITIES", values: values)
     }
     
     var statViewModel: PokeInfoViewModel {
-        let keyValues = detail
-            .map({ $0.stats.map({ PokeKeyValue(key: $0.stat.name,
-                                               value: "\($0.base_stat)") }) }) ?? []
-        return PokeInfoViewModel(title: "Stats: ", keyValues: keyValues)
+        let values = detail?.stats.map({ "\($0.stat.name.uppercased()): \($0.base_stat)" }) ?? []
+        return PokeInfoViewModel(title: "STATS", values: values)
     }
     
     var typeViewModel: PokeInfoViewModel {
-        let keyValues = detail
-            .map({ $0.types.map({ PokeKeyValue(key: $0.type.name,
-                                               value: "SLOT \($0.slot)") }) }) ?? []
-        return PokeInfoViewModel(title: "Types: ", keyValues: keyValues)
+        let values = detail?.types.map({ $0.type.name.uppercased() }) ?? []
+        return PokeInfoViewModel(title: "TYPES", values: values)
     }
         
     init(preview: PokePreview, network: NetworkContextProtocol) {

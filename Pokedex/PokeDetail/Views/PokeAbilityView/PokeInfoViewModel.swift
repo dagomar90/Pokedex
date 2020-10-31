@@ -2,9 +2,9 @@ import Foundation
 
 struct PokeInfoViewModel {
     let title: String
-    let keyValues: [PokeKeyValue]
+    let values: [String]
     
-    var pokeInfoRowViewModels: [PokeInfoRowViewModel] {
-        keyValues.map({ PokeInfoRowViewModel(key: $0.key, value: $0.value) })
+    var pokeInfoRowViewModels: [PokeSlotViewModel] {
+        values.map(PokeSlotViewModel.init)
     }
 }
