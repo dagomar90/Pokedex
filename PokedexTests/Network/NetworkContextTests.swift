@@ -5,14 +5,17 @@ class NetworkContextTests: XCTestCase {
     var sut: NetworkContext!
     var urlSession: URLSessionMock!
     var dispatcher: DispatcherMock!
+    var imagesCache: ImagesCacheMock!
     
     override func setUpWithError() throws {
         urlSession = URLSessionMock()
         dispatcher = DispatcherMock()
+        imagesCache = ImagesCacheMock()
         dispatcher.dispatchHandler = { $0() }
         sut = NetworkContext(configuration: NetworkConfiguration.mock,
                              urlSession: urlSession,
-                             dispatcher: dispatcher)
+                             dispatcher: dispatcher,
+                             imagesCache: imagesCache)
     }
 }
 
@@ -216,7 +219,33 @@ extension NetworkContextTests {
                                     XCTAssertEqual(data, Data())
                                 })
         XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
-        XCTAssertEqual(dispatcher.dispatchCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 2)
+        XCTAssertEqual(imagesCache.removeUUIDCount, 1)
+        XCTAssertEqual(imagesCache.storeImageWithUrlDataCount, 1)
+    }
+    
+    func testGetPokemonImage_success_fromCache() {
+        imagesCache.getImageWithUrlHandler = { _ in
+            return Data()
+        }
+        
+        urlSession.dataTaskWithUrlCompletionHandlerHandler = { _, completion in
+            completion(Data(), nil, nil)
+            return UrlSessionDataTaskMock()
+        }
+        
+        _ = sut.getPokemonImage(with: "http://valid_url",
+                                completion: { result in
+                                    guard case let .success(data) = result else {
+                                        XCTFail("data must be returned in success case")
+                                        return
+                                    }
+                                    XCTAssertEqual(data, Data())
+                                })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 0)
+        XCTAssertEqual(dispatcher.dispatchCount, 0)
+        XCTAssertEqual(imagesCache.removeUUIDCount, 0)
+        XCTAssertEqual(imagesCache.storeImageWithUrlDataCount, 0)
     }
     
     func testGetPokemonImage_failure_invalidUrl() {
@@ -252,7 +281,9 @@ extension NetworkContextTests {
                                     XCTAssertEqual(error as! MockError, MockError.mock)
                                 })
         XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
-        XCTAssertEqual(dispatcher.dispatchCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 2)
+        XCTAssertEqual(imagesCache.removeUUIDCount, 1)
+        XCTAssertEqual(imagesCache.storeImageWithUrlDataCount, 0)
     }
     
     func testGetPokemonImage_failure_invalidResponse() {
@@ -270,6 +301,8 @@ extension NetworkContextTests {
                                     XCTAssertEqual(error as! NetworkError, NetworkError.invalidResponse)
                                 })
         XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
-        XCTAssertEqual(dispatcher.dispatchCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 2)
+        XCTAssertEqual(imagesCache.removeUUIDCount, 1)
+        XCTAssertEqual(imagesCache.storeImageWithUrlDataCount, 0)
     }
 }

@@ -4,13 +4,16 @@ struct NetworkContext: NetworkContextProtocol {
     let configuration: NetworkConfigurationProtocol
     let urlSession: UrlSessionProtocol
     let dispatcher: Dispatcher
-    
+    let imagesCache: ImagesCacheProtocol
+        
     init(configuration: NetworkConfigurationProtocol,
          urlSession: UrlSessionProtocol = URLSession.shared,
-         dispatcher: Dispatcher = MainQueueDispatcher()) {
+         dispatcher: Dispatcher = MainQueueDispatcher(),
+         imagesCache: ImagesCacheProtocol = ImagesCache()) {
         self.configuration = configuration
         self.urlSession = urlSession
         self.dispatcher = dispatcher
+        self.imagesCache = imagesCache
     }
     
     func getPokemonList(completion: @escaping (Result<PokePreviewList, Error>) -> Void) -> Request? {
@@ -82,10 +85,19 @@ private extension NetworkContext {
     func get(_ url: URL,
              session: UrlSessionProtocol,
              dispatcher: Dispatcher,
-             completion: @escaping (Result<Data, Error>) -> Void) -> Request {
+             completion: @escaping (Result<Data, Error>) -> Void) -> Request? {
+        
+        if let image = imagesCache.getImage(with: url) {
+            completion(.success(image))
+            return nil
+        }
+        
+        let uuid = UUID()
         let task = session
             .dataTask(url: url,
                       completionHandler: { data, _, error in
+                        defer {
+                            dispatcher.dispatch { self.imagesCache.remove(uuid) } }
                         if let error = error {
                             dispatcher.dispatch { completion(.failure(error)) }
                             return
@@ -94,8 +106,11 @@ private extension NetworkContext {
                             dispatcher.dispatch { completion(.failure(NetworkError.invalidResponse)) }
                             return
                         }
-                        dispatcher.dispatch { completion(.success(data)) }
+                        dispatcher.dispatch {
+                            self.imagesCache.storeImage(with: url, data: data)
+                            completion(.success(data))
+                        }
                       })
-        return Request(task: task)
+        return Request(task: task, uuid: uuid, imagesCache: imagesCache)
     }
 }

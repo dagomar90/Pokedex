@@ -30,10 +30,11 @@ class PokeListCollectionViewCell: UICollectionViewCell {
     private var viewModel: PokeListCellViewModel?
     
     override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        viewModel?.cancelRequest()
         previewImageView.image = nil
+        viewModel?.cancelRequest()
+        viewModel = nil
+        
+        super.prepareForReuse()
     }
     
     func setup(viewModel: PokeListCellViewModel) {
@@ -55,6 +56,13 @@ class PokeListCollectionViewCell: UICollectionViewCell {
     }
     
     private func onError(_ error: Error) {
+        guard !error.isCancelled else { return }
         previewImageView.image = viewModel.flatMap({ UIImage(named: $0.placeholderName) })
+    }
+}
+
+extension Error {
+    var isCancelled: Bool {
+        (self as NSError).code == NSURLErrorCancelled
     }
 }

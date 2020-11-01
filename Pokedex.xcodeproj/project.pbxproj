@@ -49,6 +49,9 @@
 		2BAA61F8254ED1D70041B395 /* UrlSessionDataTask+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61F7254ED1D70041B395 /* UrlSessionDataTask+Protocol.swift */; };
 		2BAA61FC254ED4960041B395 /* UrlSessionDataTaskMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61FB254ED4960041B395 /* UrlSessionDataTaskMock.swift */; };
 		2BAA6200254ED5710041B395 /* DispatcherMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61FF254ED5710041B395 /* DispatcherMock.swift */; };
+		2BAA6206254F1D110041B395 /* ImagesCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA6205254F1D110041B395 /* ImagesCacheProtocol.swift */; };
+		2BAA620C254F1F460041B395 /* ImagesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA620B254F1F460041B395 /* ImagesCache.swift */; };
+		2BAA6210254F20A80041B395 /* ImagesCacheMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA620F254F20A70041B395 /* ImagesCacheMock.swift */; };
 		2BC15C452548B23700CBD9E8 /* PokePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C442548B23700CBD9E8 /* PokePreview.swift */; };
 		2BC15C4D2548B2A100CBD9E8 /* PokeListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C4C2548B2A100CBD9E8 /* PokeListCellViewModel.swift */; };
 		2BC15C552548C60400CBD9E8 /* NetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C542548C60400CBD9E8 /* NetworkContext.swift */; };
@@ -136,6 +139,9 @@
 		2BAA61F7254ED1D70041B395 /* UrlSessionDataTask+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UrlSessionDataTask+Protocol.swift"; sourceTree = "<group>"; };
 		2BAA61FB254ED4960041B395 /* UrlSessionDataTaskMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlSessionDataTaskMock.swift; sourceTree = "<group>"; };
 		2BAA61FF254ED5710041B395 /* DispatcherMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatcherMock.swift; sourceTree = "<group>"; };
+		2BAA6205254F1D110041B395 /* ImagesCacheProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCacheProtocol.swift; sourceTree = "<group>"; };
+		2BAA620B254F1F460041B395 /* ImagesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCache.swift; sourceTree = "<group>"; };
+		2BAA620F254F20A70041B395 /* ImagesCacheMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCacheMock.swift; sourceTree = "<group>"; };
 		2BC15C442548B23700CBD9E8 /* PokePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokePreview.swift; sourceTree = "<group>"; };
 		2BC15C4C2548B2A100CBD9E8 /* PokeListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeListCellViewModel.swift; sourceTree = "<group>"; };
 		2BC15C542548C60400CBD9E8 /* NetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkContext.swift; sourceTree = "<group>"; };
@@ -204,6 +210,7 @@
 				2BC15CAD2549FB1800CBD9E8 /* Cancellable.swift */,
 				2BAA61D9254ECE570041B395 /* UrlSessionProtocol.swift */,
 				2BAA61F3254ED1B40041B395 /* UrlSessionDataTaskProtocol.swift */,
+				2BAA6205254F1D110041B395 /* ImagesCacheProtocol.swift */,
 			);
 			path = Definitions;
 			sourceTree = "<group>";
@@ -420,6 +427,7 @@
 				2BAA61EF254ED0FE0041B395 /* UrlSessionMock.swift */,
 				2BAA61FB254ED4960041B395 /* UrlSessionDataTaskMock.swift */,
 				2BAA61FF254ED5710041B395 /* DispatcherMock.swift */,
+				2BAA620F254F20A70041B395 /* ImagesCacheMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -432,6 +440,7 @@
 				2BC15C542548C60400CBD9E8 /* NetworkContext.swift */,
 				2BC15C682548C7E000CBD9E8 /* NetworkConfiguration.swift */,
 				2BC15C722548CB0100CBD9E8 /* NetworkError.swift */,
+				2BAA620B254F1F460041B395 /* ImagesCache.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -612,6 +621,7 @@
 				2BAA618F254DDCCE0041B395 /* PokeInfoViewModel.swift in Sources */,
 				2BC15C552548C60400CBD9E8 /* NetworkContext.swift in Sources */,
 				2B32D97D2548A1FC005B331A /* PokeListCollectionView.swift in Sources */,
+				2BAA6206254F1D110041B395 /* ImagesCacheProtocol.swift in Sources */,
 				2BC15C452548B23700CBD9E8 /* PokePreview.swift in Sources */,
 				2BC15C832548CE9D00CBD9E8 /* MainQueueDispatcher.swift in Sources */,
 				2BAA61A5254DF23F0041B395 /* PokeType.swift in Sources */,
@@ -640,6 +650,7 @@
 				2BAA61AA254DF4330041B395 /* PokeSlotView.swift in Sources */,
 				2BC15CA02549F9E800CBD9E8 /* Global.swift in Sources */,
 				2BAA6193254DDD860041B395 /* PokeInfoView.swift in Sources */,
+				2BAA620C254F1F460041B395 /* ImagesCache.swift in Sources */,
 				2BC15CAE2549FB1800CBD9E8 /* Cancellable.swift in Sources */,
 				2BAA6109254C99570041B395 /* PokeResource.swift in Sources */,
 				2BC15CA92549FAB500CBD9E8 /* Request.swift in Sources */,
@@ -666,6 +677,7 @@
 				2BAA6160254CEFB20041B395 /* PresenterMock.swift in Sources */,
 				2BAA61D2254E3DBA0041B395 /* PokeListCoordinatorTests.swift in Sources */,
 				2BAA61BA254E33AB0041B395 /* PokeDetail+Mock.swift in Sources */,
+				2BAA6210254F20A80041B395 /* ImagesCacheMock.swift in Sources */,
 				2BAA6153254CEB130041B395 /* PokeListCoordinatorMock.swift in Sources */,
 				2BAA6137254CE5C60041B395 /* PokePreview+Mock.swift in Sources */,
 				2BAA61F0254ED0FE0041B395 /* UrlSessionMock.swift in Sources */,
