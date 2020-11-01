@@ -32,8 +32,6 @@
 		2BAA618F254DDCCE0041B395 /* PokeInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA618E254DDCCE0041B395 /* PokeInfoViewModel.swift */; };
 		2BAA6193254DDD860041B395 /* PokeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA6192254DDD860041B395 /* PokeInfoView.swift */; };
 		2BAA6199254DED580041B395 /* PokeKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA6198254DED580041B395 /* PokeKeyValue.swift */; };
-		2BAA619D254DEE6C0041B395 /* PokeInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA619C254DEE6C0041B395 /* PokeInfoRowView.swift */; };
-		2BAA61A1254DEE7A0041B395 /* PokeInfoRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61A0254DEE7A0041B395 /* PokeInfoRowViewModel.swift */; };
 		2BAA61A5254DF23F0041B395 /* PokeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61A4254DF23F0041B395 /* PokeType.swift */; };
 		2BAA61AA254DF4330041B395 /* PokeSlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61A9254DF4330041B395 /* PokeSlotView.swift */; };
 		2BAA61AE254DF4AA0041B395 /* PokeSlotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61AD254DF4AA0041B395 /* PokeSlotViewModel.swift */; };
@@ -107,8 +105,6 @@
 		2BAA618E254DDCCE0041B395 /* PokeInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeInfoViewModel.swift; sourceTree = "<group>"; };
 		2BAA6192254DDD860041B395 /* PokeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeInfoView.swift; sourceTree = "<group>"; };
 		2BAA6198254DED580041B395 /* PokeKeyValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeKeyValue.swift; sourceTree = "<group>"; };
-		2BAA619C254DEE6C0041B395 /* PokeInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeInfoRowView.swift; sourceTree = "<group>"; };
-		2BAA61A0254DEE7A0041B395 /* PokeInfoRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeInfoRowViewModel.swift; sourceTree = "<group>"; };
 		2BAA61A4254DF23F0041B395 /* PokeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeType.swift; sourceTree = "<group>"; };
 		2BAA61A9254DF4330041B395 /* PokeSlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeSlotView.swift; sourceTree = "<group>"; };
 		2BAA61AD254DF4AA0041B395 /* PokeSlotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeSlotViewModel.swift; sourceTree = "<group>"; };
@@ -324,8 +320,6 @@
 			children = (
 				2BAA618E254DDCCE0041B395 /* PokeInfoViewModel.swift */,
 				2BAA6192254DDD860041B395 /* PokeInfoView.swift */,
-				2BAA619C254DEE6C0041B395 /* PokeInfoRowView.swift */,
-				2BAA61A0254DEE7A0041B395 /* PokeInfoRowViewModel.swift */,
 			);
 			path = PokeAbilityView;
 			sourceTree = "<group>";
@@ -514,14 +508,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BAA61A1254DEE7A0041B395 /* PokeInfoRowViewModel.swift in Sources */,
 				2B32D96825489E5D005B331A /* PokeListViewModel.swift in Sources */,
 				2BC15C782548CC7000CBD9E8 /* PokePreviewList.swift in Sources */,
 				2BAA616D254CF2730041B395 /* main.swift in Sources */,
 				2BC15CCC254A27FA00CBD9E8 /* PokeDetailViewController.swift in Sources */,
 				2BC15C7D2548CE6B00CBD9E8 /* Dispatcher.swift in Sources */,
 				2BC15C732548CB0100CBD9E8 /* NetworkError.swift in Sources */,
-				2BAA619D254DEE6C0041B395 /* PokeInfoRowView.swift in Sources */,
 				2BC15C8D2548E36100CBD9E8 /* String+Utils.swift in Sources */,
 				2BC15CE8254B6C9100CBD9E8 /* PokeImage.swift in Sources */,
 				2B9C785F25489D38009CFE99 /* PokeListViewController.swift in Sources */,
