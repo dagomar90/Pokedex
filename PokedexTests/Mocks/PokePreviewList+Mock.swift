@@ -11,3 +11,9 @@ extension PokePreviewList {
                                                        previous: nil,
                                                        results: [PokePreview.mock, PokePreview.wrongUrl]) }
 }
+
+extension PokePreviewList {
+    var data: Data? {
+        try? JSONEncoder().encode(self)
+    }
+}

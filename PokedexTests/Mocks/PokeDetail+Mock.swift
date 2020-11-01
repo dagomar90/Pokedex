@@ -52,3 +52,9 @@ extension PokeType {
                  type: PokeResource(name: "Type", url: "http://type"))
     }
 }
+
+extension PokeDetail {
+    var data: Data? {
+        try? JSONEncoder().encode(self)
+    }
+}

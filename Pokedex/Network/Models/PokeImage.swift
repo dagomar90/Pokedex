@@ -1,6 +1,6 @@
 import Foundation
 
-struct PokeImages: Codable {
+struct PokeImages: Equatable, Codable {
     let front_default: String?
     let front_shiny: String?
     let front_female: String?

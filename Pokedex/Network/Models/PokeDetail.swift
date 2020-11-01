@@ -1,6 +1,6 @@
 import Foundation
 
-struct PokeDetail: Codable {
+struct PokeDetail: Equatable, Codable {
     let id: Int
     let name: String
     let base_experience: Int

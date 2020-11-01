@@ -1,6 +1,6 @@
 import Foundation
 
-struct PokePreviewList: Codable {
+struct PokePreviewList: Equatable, Codable {
     let count: Int
     let next: String?
     let previous: String?

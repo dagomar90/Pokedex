@@ -2,6 +2,16 @@ import Foundation
 
 struct NetworkContext: NetworkContextProtocol {
     let configuration: NetworkConfigurationProtocol
+    let urlSession: UrlSessionProtocol
+    let dispatcher: Dispatcher
+    
+    init(configuration: NetworkConfigurationProtocol,
+         urlSession: UrlSessionProtocol = URLSession.shared,
+         dispatcher: Dispatcher = MainQueueDispatcher()) {
+        self.configuration = configuration
+        self.urlSession = urlSession
+        self.dispatcher = dispatcher
+    }
     
     func getPokemonList(completion: @escaping (Result<PokePreviewList, Error>) -> Void) -> Request? {
         getPokemonList(with: configuration.baseUrl + "/api/v2/pokemon",
@@ -14,8 +24,8 @@ struct NetworkContext: NetworkContextProtocol {
             return nil
         }
         return get(url,
-                   session: URLSession.shared,
-                   dispatcher: MainQueueDispatcher(),
+                   session: urlSession,
+                   dispatcher: dispatcher,
                    completion: completion)
     }
     
@@ -25,8 +35,8 @@ struct NetworkContext: NetworkContextProtocol {
             return nil
         }
         return get(url,
-                   session: URLSession.shared,
-                   dispatcher: MainQueueDispatcher(),
+                   session: urlSession,
+                   dispatcher: dispatcher,
                    completion: completion)
     }
     
@@ -36,16 +46,19 @@ struct NetworkContext: NetworkContextProtocol {
             return nil
         }
         return get(url,
-                   session: URLSession.shared,
-                   dispatcher: MainQueueDispatcher(),
+                   session: urlSession,
+                   dispatcher: dispatcher,
                    completion: completion)
     }
 }
 
 private extension NetworkContext {
-    func get<T: Decodable>(_ url: URL, session: URLSession, dispatcher: Dispatcher, completion: @escaping (Result<T, Error>) -> Void) -> Request {
+    func get<T: Decodable>(_ url: URL,
+                           session: UrlSessionProtocol,
+                           dispatcher: Dispatcher,
+                           completion: @escaping (Result<T, Error>) -> Void) -> Request {
         let task = session
-            .dataTask(with: url,
+            .dataTask(url: url,
                       completionHandler: { data, _, error in
                         if let error = error {
                             dispatcher.dispatch { completion(.failure(error)) }
@@ -66,9 +79,12 @@ private extension NetworkContext {
         return Request(task: task)
     }
     
-    func get(_ url: URL, session: URLSession, dispatcher: Dispatcher, completion: @escaping (Result<Data, Error>) -> Void) -> Request {
+    func get(_ url: URL,
+             session: UrlSessionProtocol,
+             dispatcher: Dispatcher,
+             completion: @escaping (Result<Data, Error>) -> Void) -> Request {
         let task = session
-            .dataTask(with: url,
+            .dataTask(url: url,
                       completionHandler: { data, _, error in
                         if let error = error {
                             dispatcher.dispatch { completion(.failure(error)) }

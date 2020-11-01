@@ -1,7 +1,7 @@
 import Foundation
 
 struct Request: Cancellable {
-    let task: URLSessionTask
+    let task: UrlSessionDataTaskProtocol
     
     func cancel() {
         task.cancel()

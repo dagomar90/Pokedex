@@ -1,6 +1,6 @@
 import Foundation
 
-struct PokeResource: Codable {
+struct PokeResource: Equatable, Codable {
     let name: String
     let url: String
 }

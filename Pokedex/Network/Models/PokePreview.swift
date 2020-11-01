@@ -1,6 +1,6 @@
 import Foundation
 
-struct PokePreview: Codable {
+struct PokePreview: Equatable, Codable {
     let name: String
     let url: String
 }

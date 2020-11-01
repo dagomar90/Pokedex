@@ -1,6 +1,6 @@
 import Foundation
 
-struct PokeType: Codable {
+struct PokeType: Equatable, Codable {
     let slot: Int
     let type: PokeResource
 }
