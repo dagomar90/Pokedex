@@ -2,6 +2,8 @@
 
 Pokedex is an application that helps you find all you want to know about your favourite pokemons.
 
+![Alt Text](Github/sample.gif)
+
 # Project structure
 
 The project can be divided in these main parts:
@@ -46,11 +48,7 @@ Each section is divided in the following parts:
 
 # Libraries management
 
-I decided to not use any library in this project. I think that the usage of libraries must be limited to the very necessary cases, which can be: 
-
-* crash reporting
-* analytics
-* something else really needed for business reason 😊
+I decided to not use any library in this project. I think that the usage of libraries must be limited to the very necessary cases.
 
 The main reason is that every library integrated needs to be manainted in the future and can become a dependency in tecnical choises (for example in deciding to support the latest XCode, if the library we are using does not support it).
 
