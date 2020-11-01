@@ -3,6 +3,13 @@ import UIKit
 class PokeDetailViewController: UIViewController {
     let viewModel: PokeDetailViewModel
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .whiteLarge
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
+    
     private lazy var contentView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "Background")
@@ -101,6 +108,9 @@ extension PokeDetailViewController {
         view.addSubview(contentView)
         contentView.anchor(to: view)
         
+        contentView.addSubview(activityIndicator)
+        activityIndicator.anchor(to: contentView)
+        
         contentView.addSubview(backgroundView)
         backgroundView.layer.cornerRadius = 5
         backgroundView.layer.masksToBounds = true
@@ -149,9 +159,11 @@ extension PokeDetailViewController {
     private func bindToViewModel() {
         viewModel.onUpdate = { [weak self] in self?.onUpdate() }
         viewModel.onError = { [weak self] in self?.onError($0) }
+        viewModel.onLoading = { [weak self] in self?.onLoading() }
     }
     
     private func onUpdate() {
+        activityIndicator.stopAnimating()
         nameLabel.text = viewModel.name
         baseExperienceLabel.text = viewModel.baseExperience
         weightLabel.text = viewModel.weight
@@ -187,10 +199,15 @@ extension PokeDetailViewController {
     }
     
     private func onError(_ error: Error) {
+        activityIndicator.stopAnimating()
         UIAlertController.show(error: error,
                                in: self,
                                retry: { self.viewModel.load() },
                                cancel: { self.navigationController?.popViewController(animated: true) })
+    }
+    
+    private func onLoading() {
+        activityIndicator.startAnimating()
     }
 }
 

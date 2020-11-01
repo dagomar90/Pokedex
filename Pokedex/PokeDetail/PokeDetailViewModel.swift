@@ -8,6 +8,7 @@ class PokeDetailViewModel {
     
     var onUpdate: () -> Void = {}
     var onError: (Error) -> Void = { _ in }
+    var onLoading: () -> Void = {}
     
     var name: String {
         detail.map({ $0.name }).orEmpty
@@ -57,6 +58,7 @@ class PokeDetailViewModel {
     }
     
     func load() {
+        onLoading()
         network.getPokemonDetail(with: preview.url,
                                  completion: { [weak self] result in
                                     switch result {
