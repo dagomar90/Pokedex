@@ -30,6 +30,8 @@ extension NetworkContextTests {
             }
             XCTAssertEqual(list, PokePreviewList.mock)
         })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
     }
     
     func testGetPokemonList_failure_invalidUrl() {
@@ -46,6 +48,8 @@ extension NetworkContextTests {
                                 }
                                 XCTAssertEqual(error as! NetworkError, NetworkError.invalidUrl)
                                })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 0)
+        XCTAssertEqual(dispatcher.dispatchCount, 0)
     }
     
     func testGetPokemonList_failure_backendError() {
@@ -62,6 +66,8 @@ extension NetworkContextTests {
                                 }
                                 XCTAssertEqual(error as! MockError, MockError.mock)
                                })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
     }
     
     func testGetPokemonList_failure_invalidResponse() {
@@ -78,6 +84,8 @@ extension NetworkContextTests {
                                 }
                                 XCTAssertEqual(error as! NetworkError, NetworkError.invalidResponse)
                                })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
     }
     
     func testGetPokemonList_failure_decodingError() {
@@ -94,6 +102,8 @@ extension NetworkContextTests {
                                 }
                                 XCTAssertTrue(error is DecodingError)
                                })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
     }
 }
 
@@ -112,6 +122,8 @@ extension NetworkContextTests {
                                     }
                                     XCTAssertEqual(detail, PokeDetail.mock)
                                  })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
     }
     
     func testGetPokemonDetail_failure_invalidUrl() {
@@ -128,6 +140,8 @@ extension NetworkContextTests {
                                     }
                                     XCTAssertEqual(error as! NetworkError, NetworkError.invalidUrl)
                                  })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 0)
+        XCTAssertEqual(dispatcher.dispatchCount, 0)
     }
     
     func testGetPokemonDetail_failure_backendError() {
@@ -144,6 +158,8 @@ extension NetworkContextTests {
                                     }
                                     XCTAssertEqual(error as! MockError, MockError.mock)
                                  })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
     }
     
     func testGetPokemonDetail_failure_invalidResponse() {
@@ -160,6 +176,8 @@ extension NetworkContextTests {
                                     }
                                     XCTAssertEqual(error as! NetworkError, NetworkError.invalidResponse)
                                  })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
     }
     
     func testGetPokemonDetail_failure_decodingError() {
@@ -176,6 +194,8 @@ extension NetworkContextTests {
                                     }
                                     XCTAssertTrue(error is DecodingError)
                                  })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
     }
 }
 
@@ -195,6 +215,8 @@ extension NetworkContextTests {
                                     }
                                     XCTAssertEqual(data, Data())
                                 })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
     }
     
     func testGetPokemonImage_failure_invalidUrl() {
@@ -211,6 +233,8 @@ extension NetworkContextTests {
                                     }
                                     XCTAssertEqual(error as! NetworkError, NetworkError.invalidUrl)
                                 })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 0)
+        XCTAssertEqual(dispatcher.dispatchCount, 0)
     }
     
     func testGetPokemonImage_failure_backendError() {
@@ -227,6 +251,8 @@ extension NetworkContextTests {
                                     }
                                     XCTAssertEqual(error as! MockError, MockError.mock)
                                 })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
     }
     
     func testGetPokemonImage_failure_invalidResponse() {
@@ -243,5 +269,7 @@ extension NetworkContextTests {
                                     }
                                     XCTAssertEqual(error as! NetworkError, NetworkError.invalidResponse)
                                 })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
     }
 }
