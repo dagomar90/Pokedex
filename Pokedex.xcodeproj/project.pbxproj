@@ -31,7 +31,6 @@
 		2BAA6176254CF2FF0041B395 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA6172254CF2A30041B395 /* TestingAppDelegate.swift */; };
 		2BAA618F254DDCCE0041B395 /* PokeInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA618E254DDCCE0041B395 /* PokeInfoViewModel.swift */; };
 		2BAA6193254DDD860041B395 /* PokeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA6192254DDD860041B395 /* PokeInfoView.swift */; };
-		2BAA6199254DED580041B395 /* PokeKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA6198254DED580041B395 /* PokeKeyValue.swift */; };
 		2BAA61A5254DF23F0041B395 /* PokeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61A4254DF23F0041B395 /* PokeType.swift */; };
 		2BAA61AA254DF4330041B395 /* PokeSlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61A9254DF4330041B395 /* PokeSlotView.swift */; };
 		2BAA61AE254DF4AA0041B395 /* PokeSlotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61AD254DF4AA0041B395 /* PokeSlotViewModel.swift */; };
@@ -107,7 +106,6 @@
 		2BAA6172254CF2A30041B395 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
 		2BAA618E254DDCCE0041B395 /* PokeInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeInfoViewModel.swift; sourceTree = "<group>"; };
 		2BAA6192254DDD860041B395 /* PokeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeInfoView.swift; sourceTree = "<group>"; };
-		2BAA6198254DED580041B395 /* PokeKeyValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeKeyValue.swift; sourceTree = "<group>"; };
 		2BAA61A4254DF23F0041B395 /* PokeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeType.swift; sourceTree = "<group>"; };
 		2BAA61A9254DF4330041B395 /* PokeSlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeSlotView.swift; sourceTree = "<group>"; };
 		2BAA61AD254DF4AA0041B395 /* PokeSlotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeSlotViewModel.swift; sourceTree = "<group>"; };
@@ -373,7 +371,6 @@
 				2BAA6103254C98880041B395 /* PokeAbility.swift */,
 				2BAA61A4254DF23F0041B395 /* PokeType.swift */,
 				2BAA6108254C99570041B395 /* PokeResource.swift */,
-				2BAA6198254DED580041B395 /* PokeKeyValue.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -551,7 +548,6 @@
 				2BE2656B2548A62E00FFFB29 /* UIViewController+Present.swift in Sources */,
 				2BC15C922549D56100CBD9E8 /* PokeListCollectionViewCell.swift in Sources */,
 				2BC15C4D2548B2A100CBD9E8 /* PokeListCellViewModel.swift in Sources */,
-				2BAA6199254DED580041B395 /* PokeKeyValue.swift in Sources */,
 				2BAA60FF254C987E0041B395 /* PokeStat.swift in Sources */,
 				2BC15CF5254B75F300CBD9E8 /* PokeImageView.swift in Sources */,
 				2BC15C692548C7E000CBD9E8 /* NetworkConfiguration.swift in Sources */,
