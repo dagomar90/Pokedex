@@ -165,12 +165,19 @@ extension PokeDetailViewController {
     private func onUpdate() {
         activityIndicator.stopAnimating()
         backgroundView.backgroundColor = UIColor.white
-        
+        updateLabels()
+        updateImages()
+        updateInfos()
+    }
+    
+    private func updateLabels() {
         nameLabel.text = viewModel.name
         baseExperienceLabel.text = viewModel.baseExperience
         weightLabel.text = viewModel.weight
         heightLabel.text = viewModel.height
-        
+    }
+    
+    private func updateImages() {
         viewModel
             .images
             .map({ PokeImageViewModel(url: $0, network: viewModel.network) })
@@ -183,7 +190,9 @@ extension PokeDetailViewController {
         
         imagesPageControl.numberOfPages = viewModel.images.count
         imagesPageControl.currentPage = 0
-        
+    }
+    
+    private func updateInfos() {
         addInfoView(viewModel.typeViewModel)
         addInfoView(viewModel.abilitityViewModel)
         addInfoView(viewModel.statViewModel)
