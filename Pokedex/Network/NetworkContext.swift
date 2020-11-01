@@ -7,7 +7,7 @@ struct NetworkContext: NetworkContextProtocol {
     let imagesCache: ImagesCacheProtocol
         
     init(configuration: NetworkConfigurationProtocol,
-         urlSession: UrlSessionProtocol = URLSession.shared,
+         urlSession: UrlSessionProtocol = URLSession.main,
          dispatcher: Dispatcher = MainQueueDispatcher(),
          imagesCache: ImagesCacheProtocol = ImagesCache()) {
         self.configuration = configuration
@@ -112,5 +112,16 @@ private extension NetworkContext {
                         }
                       })
         return Request(task: task, uuid: uuid, imagesCache: imagesCache)
+    }
+}
+
+extension URLSession {
+    static var main: URLSession {
+        let configuration = URLSessionConfiguration.default
+        configuration.requestCachePolicy = .returnCacheDataElseLoad
+        configuration.urlCache = URLCache(memoryCapacity: 1024 * 1024 * 5,
+                                          diskCapacity: 1024 * 1024 * 200,
+                                          diskPath: "PokeDex")
+        return URLSession(configuration: configuration)
     }
 }
