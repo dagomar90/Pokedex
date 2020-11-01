@@ -125,7 +125,7 @@ extension PokeDetailViewController {
         mainScrollView.addSubview(verticalStack)
         verticalStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([verticalStack.topAnchor.constraint(equalTo: imagesScrollView.bottomAnchor),
-                                     verticalStack.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor),
+                                     verticalStack.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor, constant: -32),
                                      verticalStack.leftAnchor.constraint(equalTo: mainScrollView.leftAnchor),
                                      verticalStack.rightAnchor.constraint(equalTo: mainScrollView.rightAnchor)])
         

@@ -5,7 +5,7 @@ class PokeSlotView: UIView {
     
     let container: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "Background")
+        view.backgroundColor = UIColor(named: "Chip")
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
         return view
@@ -15,6 +15,7 @@ class PokeSlotView: UIView {
         let label = UILabel()
         label.textColor = UIColor.white
         label.textAlignment = .center
+        label.numberOfLines = 0
         label.font = UIFont(name: "Signika-Light", size: 16)
         return label
     }()
