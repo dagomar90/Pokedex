@@ -191,9 +191,8 @@
 		2B32D97B2548A1EF005B331A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2B32D97C2548A1FC005B331A /* PokeListCollectionView.swift */,
-				2BC15C4C2548B2A100CBD9E8 /* PokeListCellViewModel.swift */,
-				2BC15C912549D56100CBD9E8 /* PokeListCollectionViewCell.swift */,
+				2BAA61D6254E3F550041B395 /* PokeListCollectionViewCell */,
+				2BAA61D5254E3F4C0041B395 /* PokeListCollectionView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -363,6 +362,23 @@
 				2BAA61C7254E3BEA0041B395 /* PokeInfoViewModelTests.swift */,
 			);
 			path = PokeInfoView;
+			sourceTree = "<group>";
+		};
+		2BAA61D5254E3F4C0041B395 /* PokeListCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				2B32D97C2548A1FC005B331A /* PokeListCollectionView.swift */,
+			);
+			path = PokeListCollectionView;
+			sourceTree = "<group>";
+		};
+		2BAA61D6254E3F550041B395 /* PokeListCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2BC15C4C2548B2A100CBD9E8 /* PokeListCellViewModel.swift */,
+				2BC15C912549D56100CBD9E8 /* PokeListCollectionViewCell.swift */,
+			);
+			path = PokeListCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		2BC15C422548B16F00CBD9E8 /* Network */ = {
