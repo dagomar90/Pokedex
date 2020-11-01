@@ -63,7 +63,7 @@ class PokeDetailViewModel {
                                     case let .success(detail):
                                         self?.onSuccess(detail)
                                     case let .failure(error):
-                                        self?.onError(error)
+                                        self?.onFailure(error)
                                     }
                                  })?.execute()
     }
