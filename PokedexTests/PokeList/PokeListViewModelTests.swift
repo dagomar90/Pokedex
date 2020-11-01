@@ -32,7 +32,7 @@ class PokeListViewModelTests: XCTestCase {
             return nil
         }
         
-        sut.onUpdate = { XCTFail("It must not be called") }
+        sut.onUpdate = { _ in XCTFail("It must not be called") }
         sut.onError = { XCTAssertEqual($0 as! MockError, MockError.mock) }
         
         sut.load()
@@ -89,7 +89,7 @@ class PokeListViewModelTests: XCTestCase {
             return nil
         }
         sut.load()
-        sut.onUpdate = { XCTFail("It must not be called") }
+        sut.onUpdate = { _ in XCTFail("It must not be called") }
         sut.onError = { XCTAssertEqual($0 as! MockError, MockError.mock) }
         
         sut.loadNext(IndexPath(row: 1, section: 0))

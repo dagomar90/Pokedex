@@ -28,13 +28,13 @@ class PokeListViewController: UIViewController {
     }
         
     private func subscribeToViewModel() {
-        viewModel.onUpdate = { [weak self] in self?.onUpdate() }
+        viewModel.onUpdate = { [weak self] in self?.onUpdate(indexPaths: $0) }
         viewModel.onError = { [weak self] in self?.onError($0) }
         viewModel.onSelect = { [weak self] in self?.onSelect($0) }
     }
     
-    private func onUpdate() {
-        collectionView.reloadData()
+    private func onUpdate(indexPaths: [IndexPath]) {
+        collectionView.insertItems(at: indexPaths)
     }
     
     private func onError(_ error: Error) {
