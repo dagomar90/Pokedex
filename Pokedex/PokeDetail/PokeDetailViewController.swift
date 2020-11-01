@@ -164,42 +164,41 @@ extension PokeDetailViewController {
     
     private func onUpdate() {
         activityIndicator.stopAnimating()
+        backgroundView.backgroundColor = UIColor.white
+        
         nameLabel.text = viewModel.name
         baseExperienceLabel.text = viewModel.baseExperience
         weightLabel.text = viewModel.weight
         heightLabel.text = viewModel.height
         
-        let images = viewModel
+        viewModel
             .images
             .map({ PokeImageViewModel(url: $0, network: viewModel.network) })
             .map(PokeImageView.init)
-            
-        images.forEach({ image in
-            imagesStackView.addArrangedSubview(image)
-            image.widthAnchor.constraint(equalTo: imagesScrollView.widthAnchor).isActive = true
-            image.heightAnchor.constraint(equalTo: imagesScrollView.heightAnchor).isActive = true
-        })
+            .forEach({ image in
+                imagesStackView.addArrangedSubview(image)
+                image.widthAnchor.constraint(equalTo: imagesScrollView.widthAnchor).isActive = true
+                image.heightAnchor.constraint(equalTo: imagesScrollView.heightAnchor).isActive = true
+            })
         
-        imagesPageControl.numberOfPages = images.count
+        imagesPageControl.numberOfPages = viewModel.images.count
         imagesPageControl.currentPage = 0
-                
-        let typeInfoView = PokeInfoView(viewModel: viewModel.typeViewModel)
-        let abilitiesInfoView = PokeInfoView(viewModel: viewModel.abilitityViewModel)
-        let statInfoView = PokeInfoView(viewModel: viewModel.statViewModel)
-        verticalStack.addSeparator()
-        verticalStack.addArrangedSubview(typeInfoView)
-        verticalStack.addSeparator()
-        verticalStack.addArrangedSubview(abilitiesInfoView)
-        verticalStack.addSeparator()
-        verticalStack.addArrangedSubview(statInfoView)
         
-        NSLayoutConstraint.activate([typeInfoView.widthAnchor.constraint(equalTo: verticalStack.widthAnchor, constant: -48),
-                                     abilitiesInfoView.widthAnchor.constraint(equalTo: verticalStack.widthAnchor, constant: -48),
-                                      statInfoView.widthAnchor.constraint(equalTo: verticalStack.widthAnchor, constant: -48)])
+        addInfoView(viewModel.typeViewModel)
+        addInfoView(viewModel.abilitityViewModel)
+        addInfoView(viewModel.statViewModel)
+    }
+    
+    private func addInfoView(_ viewModel: PokeInfoViewModel) {
+        let view = PokeInfoView(viewModel: viewModel)
+        verticalStack.addSeparator()
+        verticalStack.addArrangedSubview(view)
+        view.widthAnchor.constraint(equalTo: verticalStack.widthAnchor, constant: -48).isActive = true
     }
     
     private func onError(_ error: Error) {
         activityIndicator.stopAnimating()
+        backgroundView.backgroundColor = UIColor.white
         UIAlertController.show(error: error,
                                in: self,
                                retry: { self.viewModel.load() },
@@ -208,6 +207,7 @@ extension PokeDetailViewController {
     
     private func onLoading() {
         activityIndicator.startAnimating()
+        backgroundView.backgroundColor = UIColor.clear
     }
 }
 
