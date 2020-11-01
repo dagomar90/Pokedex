@@ -179,8 +179,7 @@ extension PokeDetailViewController {
     
     private func updateImages() {
         viewModel
-            .images
-            .map({ PokeImageViewModel(url: $0, network: viewModel.network) })
+            .imageViewModels
             .map(PokeImageView.init)
             .forEach({ image in
                 imagesStackView.addArrangedSubview(image)
@@ -188,7 +187,7 @@ extension PokeDetailViewController {
                 image.heightAnchor.constraint(equalTo: imagesScrollView.heightAnchor).isActive = true
             })
         
-        imagesPageControl.numberOfPages = viewModel.images.count
+        imagesPageControl.numberOfPages = viewModel.imageViewModels.count
         imagesPageControl.currentPage = 0
     }
     

@@ -61,15 +61,15 @@ class PokeDetailViewModelTests: XCTestCase {
         }
         sut.load()
         
-        let result = sut.images
-        XCTAssertEqual(result, ["http://front_default",
-                                "http://back_default",
-                                "http://front_female",
-                                "http://back_female",
-                                "http://front_shiny",
-                                "http://back_shiny",
-                                "http://front_shiny_female",
-                                "http://back_shiny_female"])
+        let result = sut.imageViewModels
+        XCTAssertEqual(result.map({ $0.url }), ["http://front_default",
+                                                "http://back_default",
+                                                "http://front_female",
+                                                "http://back_female",
+                                                "http://front_shiny",
+                                                "http://back_shiny",
+                                                "http://front_shiny_female",
+                                                "http://back_shiny_female"])
     }
     
     func testAbilityViewModel() {

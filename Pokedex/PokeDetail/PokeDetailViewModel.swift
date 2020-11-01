@@ -26,7 +26,7 @@ class PokeDetailViewModel {
         detail.map({ "WEIGHT: \($0.weight / 10) kg" }).orEmpty
     }
     
-    var images: [String] {
+    var imageViewModels: [PokeImageViewModel] {
         [detail?.sprites.front_default,
          detail?.sprites.back_default,
          detail?.sprites.front_female,
@@ -34,7 +34,9 @@ class PokeDetailViewModel {
          detail?.sprites.front_shiny,
          detail?.sprites.back_shiny,
          detail?.sprites.front_shiny_female,
-         detail?.sprites.back_shiny_female].compactMap({ $0 })
+         detail?.sprites.back_shiny_female]
+            .compactMap({ $0 })
+            .map({ PokeImageViewModel(url: $0, network: network) })
     }
     
     var abilitityViewModel: PokeInfoViewModel {
