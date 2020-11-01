@@ -38,6 +38,7 @@
 		2BAA61BA254E33AB0041B395 /* PokeDetail+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61B9254E33AB0041B395 /* PokeDetail+Mock.swift */; };
 		2BAA61BF254E3A700041B395 /* PokeImageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61BE254E3A700041B395 /* PokeImageViewModelTests.swift */; };
 		2BAA61C8254E3BEA0041B395 /* PokeInfoViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61C7254E3BEA0041B395 /* PokeInfoViewModelTests.swift */; };
+		2BAA61CE254E3CAC0041B395 /* PokeDetailCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA61CD254E3CAC0041B395 /* PokeDetailCoordinatorTests.swift */; };
 		2BC15C452548B23700CBD9E8 /* PokePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C442548B23700CBD9E8 /* PokePreview.swift */; };
 		2BC15C4D2548B2A100CBD9E8 /* PokeListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C4C2548B2A100CBD9E8 /* PokeListCellViewModel.swift */; };
 		2BC15C552548C60400CBD9E8 /* NetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C542548C60400CBD9E8 /* NetworkContext.swift */; };
@@ -114,6 +115,7 @@
 		2BAA61B9254E33AB0041B395 /* PokeDetail+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PokeDetail+Mock.swift"; sourceTree = "<group>"; };
 		2BAA61BE254E3A700041B395 /* PokeImageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeImageViewModelTests.swift; sourceTree = "<group>"; };
 		2BAA61C7254E3BEA0041B395 /* PokeInfoViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeInfoViewModelTests.swift; sourceTree = "<group>"; };
+		2BAA61CD254E3CAC0041B395 /* PokeDetailCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeDetailCoordinatorTests.swift; sourceTree = "<group>"; };
 		2BC15C442548B23700CBD9E8 /* PokePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokePreview.swift; sourceTree = "<group>"; };
 		2BC15C4C2548B2A100CBD9E8 /* PokeListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeListCellViewModel.swift; sourceTree = "<group>"; };
 		2BC15C542548C60400CBD9E8 /* NetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkContext.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				2BAA61C6254E3BD90041B395 /* PokeInfoView */,
 				2BAA61BD254E3A560041B395 /* PokeImageView */,
 				2BAA61B5254E33490041B395 /* PokeDetailViewModelTests.swift */,
+				2BAA61CD254E3CAC0041B395 /* PokeDetailCoordinatorTests.swift */,
 			);
 			path = PokeDetail;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BAA61CE254E3CAC0041B395 /* PokeDetailCoordinatorTests.swift in Sources */,
 				2BAA612A254CE3F30041B395 /* NetworkMock.swift in Sources */,
 				2BAA61BF254E3A700041B395 /* PokeImageViewModelTests.swift in Sources */,
 				2BAA6145254CE8A30041B395 /* MockError.swift in Sources */,
