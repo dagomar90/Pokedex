@@ -68,7 +68,7 @@ private extension NetworkContext {
                             return
                         }
                         
-                        guard let response = response, !response.notFound else {
+                        guard !response.notFound else {
                             dispatcher.dispatch { completion(.failure(NetworkError.notFound)) }
                             return
                         }
@@ -132,7 +132,7 @@ extension URLSession {
     }
 }
 
-extension URLResponse {
+extension Optional where Wrapped == URLResponse {
     var notFound: Bool {
         (self as? HTTPURLResponse)?.statusCode == 404
     }

@@ -55,6 +55,10 @@
 		2BAA6214254F35440041B395 /* ImagesCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA6213254F35440041B395 /* ImagesCacheTests.swift */; };
 		2BAA621D25508A2E0041B395 /* PokeListSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA621C25508A2B0041B395 /* PokeListSearchBarView.swift */; };
 		2BAA622325508A3D0041B395 /* PokeListSearchBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA622225508A3D0041B395 /* PokeListSearchBarViewModel.swift */; };
+		2BAA62272550B4F20041B395 /* URLResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA62262550B4F10041B395 /* URLResponseMock.swift */; };
+		2BAA622D2550B5F60041B395 /* URLSessionMainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA622C2550B5F60041B395 /* URLSessionMainTests.swift */; };
+		2BAA62372550B7250041B395 /* PokeListSearchBarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA62362550B7250041B395 /* PokeListSearchBarViewModelTests.swift */; };
+		2BAA623B2550B98C0041B395 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA623A2550B98C0041B395 /* RequestTests.swift */; };
 		2BC15C452548B23700CBD9E8 /* PokePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C442548B23700CBD9E8 /* PokePreview.swift */; };
 		2BC15C4D2548B2A100CBD9E8 /* PokeListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C4C2548B2A100CBD9E8 /* PokeListCellViewModel.swift */; };
 		2BC15C552548C60400CBD9E8 /* NetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC15C542548C60400CBD9E8 /* NetworkContext.swift */; };
@@ -148,6 +152,10 @@
 		2BAA6213254F35440041B395 /* ImagesCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCacheTests.swift; sourceTree = "<group>"; };
 		2BAA621C25508A2B0041B395 /* PokeListSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeListSearchBarView.swift; sourceTree = "<group>"; };
 		2BAA622225508A3D0041B395 /* PokeListSearchBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeListSearchBarViewModel.swift; sourceTree = "<group>"; };
+		2BAA62262550B4F10041B395 /* URLResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResponseMock.swift; sourceTree = "<group>"; };
+		2BAA622C2550B5F60041B395 /* URLSessionMainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMainTests.swift; sourceTree = "<group>"; };
+		2BAA62362550B7250041B395 /* PokeListSearchBarViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeListSearchBarViewModelTests.swift; sourceTree = "<group>"; };
+		2BAA623A2550B98C0041B395 /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 		2BC15C442548B23700CBD9E8 /* PokePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokePreview.swift; sourceTree = "<group>"; };
 		2BC15C4C2548B2A100CBD9E8 /* PokeListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeListCellViewModel.swift; sourceTree = "<group>"; };
 		2BC15C542548C60400CBD9E8 /* NetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkContext.swift; sourceTree = "<group>"; };
@@ -312,6 +320,7 @@
 				2BAA6131254CE5790041B395 /* PokeListCellViewModelTests.swift */,
 				2BAA6149254CEA830041B395 /* PokeListViewModelTests.swift */,
 				2BAA61D1254E3DBA0041B395 /* PokeListCoordinatorTests.swift */,
+				2BAA62362550B7250041B395 /* PokeListSearchBarViewModelTests.swift */,
 			);
 			path = PokeList;
 			sourceTree = "<group>";
@@ -424,6 +433,8 @@
 				2BAA61E8254ED08F0041B395 /* Mocks */,
 				2BAA61E2254ED00E0041B395 /* NetworkContextTests.swift */,
 				2BAA6213254F35440041B395 /* ImagesCacheTests.swift */,
+				2BAA622C2550B5F60041B395 /* URLSessionMainTests.swift */,
+				2BAA623A2550B98C0041B395 /* RequestTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -436,6 +447,7 @@
 				2BAA61FB254ED4960041B395 /* UrlSessionDataTaskMock.swift */,
 				2BAA61FF254ED5710041B395 /* DispatcherMock.swift */,
 				2BAA620F254F20A70041B395 /* ImagesCacheMock.swift */,
+				2BAA62262550B4F10041B395 /* URLResponseMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -691,13 +703,17 @@
 				2BAA614A254CEA830041B395 /* PokeListViewModelTests.swift in Sources */,
 				2BAA61E3254ED00E0041B395 /* NetworkContextTests.swift in Sources */,
 				2BAA6214254F35440041B395 /* ImagesCacheTests.swift in Sources */,
+				2BAA62372550B7250041B395 /* PokeListSearchBarViewModelTests.swift in Sources */,
 				2BAA61B6254E33490041B395 /* PokeDetailViewModelTests.swift in Sources */,
 				2BAA6176254CF2FF0041B395 /* TestingAppDelegate.swift in Sources */,
+				2BAA62272550B4F20041B395 /* URLResponseMock.swift in Sources */,
 				2BAA61C8254E3BEA0041B395 /* PokeInfoViewModelTests.swift in Sources */,
 				2BAA6160254CEFB20041B395 /* PresenterMock.swift in Sources */,
 				2BAA61D2254E3DBA0041B395 /* PokeListCoordinatorTests.swift in Sources */,
 				2BAA61BA254E33AB0041B395 /* PokeDetail+Mock.swift in Sources */,
 				2BAA6210254F20A80041B395 /* ImagesCacheMock.swift in Sources */,
+				2BAA622D2550B5F60041B395 /* URLSessionMainTests.swift in Sources */,
+				2BAA623B2550B98C0041B395 /* RequestTests.swift in Sources */,
 				2BAA6153254CEB130041B395 /* PokeListCoordinatorMock.swift in Sources */,
 				2BAA6137254CE5C60041B395 /* PokePreview+Mock.swift in Sources */,
 				2BAA61F0254ED0FE0041B395 /* UrlSessionMock.swift in Sources */,

@@ -2,6 +2,8 @@ import Foundation
 @testable import Pokedex
 
 class NetworkMock: NetworkContextProtocol {
+    var getConfigurationCount: Int = 0
+    var getConfigurationHandler: () -> NetworkConfigurationProtocol = { NetworkConfiguration.mock }
     var getPokemonListCount: Int = 0
     var getPokemonListHandler: ((Result<PokePreviewList, Error>) -> Void) -> Request? = { _ in nil }
     var getPokemonListWithUrlStringCount: Int = 0
@@ -10,6 +12,11 @@ class NetworkMock: NetworkContextProtocol {
     var getPokemonImageHandler: (String, (Result<Data, Error>) -> Void) -> Request? = { _, _ in nil }
     var getPokemonDetailCount: Int = 0
     var getPokemonDetailHandler: (String, (Result<PokeDetail, Error>) -> Void) -> Request? = { _, _ in nil }
+    
+    var configuration: NetworkConfigurationProtocol {
+        getConfigurationCount += 1
+        return getConfigurationHandler()
+    }
     
     func getPokemonList(completion: @escaping (Result<PokePreviewList, Error>) -> Void) -> Request? {
         getPokemonListCount += 1

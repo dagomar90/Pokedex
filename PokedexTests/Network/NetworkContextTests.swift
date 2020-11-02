@@ -73,6 +73,24 @@ extension NetworkContextTests {
         XCTAssertEqual(dispatcher.dispatchCount, 1)
     }
     
+    func testGetPokemonList_failure_notFound() {
+        urlSession.dataTaskWithUrlCompletionHandlerHandler = { _, completion in
+            completion(nil, URLResponse.notFound, nil)
+            return UrlSessionDataTaskMock()
+        }
+        
+        _ = sut.getPokemonList(with: "http://valid",
+                               completion: { result in
+                                guard case let .failure(error) = result else {
+                                    XCTFail("error must be returned in failure case")
+                                    return
+                                }
+                                XCTAssertEqual(error as! NetworkError, NetworkError.notFound)
+                               })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
+    }
+    
     func testGetPokemonList_failure_invalidResponse() {
         urlSession.dataTaskWithUrlCompletionHandlerHandler = { _, completion in
             completion(nil, nil, nil)
@@ -160,6 +178,24 @@ extension NetworkContextTests {
                                         return
                                     }
                                     XCTAssertEqual(error as! MockError, MockError.mock)
+                                 })
+        XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
+        XCTAssertEqual(dispatcher.dispatchCount, 1)
+    }
+    
+    func testGetPokemonDetail_failure_notFound() {
+        urlSession.dataTaskWithUrlCompletionHandlerHandler = { _, completion in
+            completion(nil, URLResponse.notFound, nil)
+            return UrlSessionDataTaskMock()
+        }
+        
+        _ = sut.getPokemonDetail(with: "http://valid",
+                                 completion: { result in
+                                    guard case let .failure(error) = result else {
+                                        XCTFail("error must be returned in failure case")
+                                        return
+                                    }
+                                    XCTAssertEqual(error as! NetworkError, NetworkError.notFound)
                                  })
         XCTAssertEqual(urlSession.dataTaskWithUrlCompletionHandlerCount, 1)
         XCTAssertEqual(dispatcher.dispatchCount, 1)
