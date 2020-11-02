@@ -8,6 +8,12 @@ class PokeListViewController: UIViewController {
                                      size: view.frame.size)
     }()
     
+    private lazy var searchBar: PokeListSearchBarView = {
+        let view = PokeListSearchBarView(viewModel: viewModel.searchBarViewModel)
+        view.backgroundColor = UIColor(named: "Background")
+        return view
+    }()
+    
     init(viewModel: PokeListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -27,8 +33,18 @@ class PokeListViewController: UIViewController {
         
         subscribeToViewModel()
         
+        view.addSubview(searchBar)
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
-        collectionView.anchor(to: view)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([searchBar.topAnchor.constraint(equalTo: view.topAnchor),
+                                     searchBar.leftAnchor.constraint(equalTo: view.leftAnchor),
+                                     searchBar.rightAnchor.constraint(equalTo: view.rightAnchor),
+                                     collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+                                     collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
+                                     collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                                     collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor)])
         load()
     }
         
@@ -36,6 +52,7 @@ class PokeListViewController: UIViewController {
         viewModel.onUpdate = { [weak self] in self?.onUpdate(indexPaths: $0) }
         viewModel.onError = { [weak self] in self?.onError($0) }
         viewModel.onSelect = { [weak self] in self?.onSelect($0) }
+        viewModel.searchBarViewModel.onGo = { [weak self] in self?.onSearchBarGo(name: $0, url: $1) }
     }
     
     private func onUpdate(indexPaths: [IndexPath]) {
@@ -55,6 +72,10 @@ class PokeListViewController: UIViewController {
     
     private func load() {
         viewModel.load()
+    }
+    
+    private func onSearchBarGo(name: String, url: String) {
+        onSelect(PokePreview(name: name, url: url))
     }
 }
 
@@ -88,5 +109,12 @@ extension PokeListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         viewModel.viewModels[indexPath.row].select()
+        viewModel.searchBarViewModel.pokemonSelected()
+    }
+}
+
+extension PokeListViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        viewModel.searchBarViewModel.scroll()
     }
 }

@@ -4,6 +4,7 @@ class PokeListViewModel {
     private let network: NetworkContextProtocol
     private let coordinator: PokeListCoordinatorProtocol
     private(set) var viewModels: [PokeListCellViewModel] = []
+    let searchBarViewModel: PokeListSearchBarViewModel
     private var next: String?
     
     var onUpdate: ([IndexPath]) -> Void = { _ in }
@@ -14,6 +15,7 @@ class PokeListViewModel {
          coordinator: PokeListCoordinatorProtocol) {
         self.network = network
         self.coordinator = coordinator
+        self.searchBarViewModel = PokeListSearchBarViewModel(network: network)
     }
     
     func load() {
