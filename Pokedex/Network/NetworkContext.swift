@@ -62,11 +62,17 @@ private extension NetworkContext {
                            completion: @escaping (Result<T, Error>) -> Void) -> Request {
         let task = session
             .dataTask(url: url,
-                      completionHandler: { data, _, error in
+                      completionHandler: { data, response, error in
                         if let error = error {
                             dispatcher.dispatch { completion(.failure(error)) }
                             return
                         }
+                        
+                        guard let response = response, !response.notFound else {
+                            dispatcher.dispatch { completion(.failure(NetworkError.notFound)) }
+                            return
+                        }
+                        
                         guard let data = data else {
                             dispatcher.dispatch { completion(.failure(NetworkError.invalidResponse)) }
                             return
@@ -123,5 +129,11 @@ extension URLSession {
                                           diskCapacity: 1024 * 1024 * 200,
                                           diskPath: "PokeDex")
         return URLSession(configuration: configuration)
+    }
+}
+
+extension URLResponse {
+    var notFound: Bool {
+        (self as? HTTPURLResponse)?.statusCode == 404
     }
 }

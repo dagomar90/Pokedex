@@ -206,7 +206,6 @@ extension PokeDetailViewController {
     
     private func onError(_ error: Error) {
         activityIndicator.stopAnimating()
-        backgroundView.backgroundColor = UIColor.white
         UIAlertController.show(error: error,
                                in: self,
                                retry: { self.viewModel.load() },
