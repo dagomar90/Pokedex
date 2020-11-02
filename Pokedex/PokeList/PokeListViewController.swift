@@ -17,6 +17,11 @@ class PokeListViewController: UIViewController {
         fatalError("init with coder is not supported")
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionView.bounds = CGRect(origin: .zero, size: size)
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +43,10 @@ class PokeListViewController: UIViewController {
     }
     
     private func onError(_ error: Error) {
-        
+        UIAlertController.show(error: error,
+                               in: self,
+                               retry: { self.load() },
+                               cancel: { })
     }
     
     private func onSelect(_ pokemon: PokePreview) {

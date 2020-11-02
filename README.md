@@ -46,7 +46,7 @@ Each section is divided in the following parts:
 
 * Views: sometimes in order to avoid to have massive and big view controllers, I decided to create some useful view. Since the architecture is an MVVM one, for each view with logic there is also a viewModel associated.
 
-# Libraries management
+# Libraries
 
 I decided to not use any library in this project. I think that the usage of libraries must be limited to the very necessary cases.
 
@@ -62,6 +62,7 @@ There are also other reasons:
 The code described above is covered by Unit tests. 
 I decided to cover the following sections:
 * NetworkContext
+* ImagesCache
 * ViewModels
 
 The motivation is that these are the main holders of the business logic of the application. Of course, in the future, some UI test with stub network can be implemented, to cover the ui part 😊.

@@ -46,6 +46,6 @@ extension PokeImageView {
     }
     
     private func onError(_ error: Error) {
-        
+        imageView.image = UIImage.init(named: "Placeholder")
     }
 }
