@@ -68,3 +68,11 @@ I decided to cover the following sections:
 The motivation is that these are the main holders of the business logic of the application. Of course, in the future, some UI test with stub network can be implemented, to cover the ui part 😊.
 
 I created a TestAppDelegate, too, to avoid to start the application using unit tests.
+
+# Additional features
+
+I decided to add a search bar on the top of the list page. I decided to integrate it because, after one day of usage, it was very difficult for me to scroll the collection to reach the desired pokemon (they are 1050 results!!). 
+
+So, even if the user experience is not the best we can found in an application, I decided to integrate it.
+
+Basically it works in this way: the user has the possibility to open directly the pokemon detail using the name. If the user decides to insert some name of a not existing pokemon, then a not found error is raised from the detail page. Here, he can retry (of course it will fail again) or press cancel and go back to the list.
